@@ -9,13 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-   var elementsLoaderImpl : ElementsLoader?
+   var trashHintsLoaderImpl : TrashHintsLoader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        elementsLoaderImpl = ElementsLoaderImpl()
-        elementsLoaderImpl?.loadElements(text: "Kube", completion: { (elements) in
+        trashHintsLoaderImpl = TrashHintsLoaderImpl()
+        trashHintsLoaderImpl?.loadTrashHints(text: "Cera", completion: { (elements) in
             if elements != nil {
                 for el in elements!{
                 print(el.label)
