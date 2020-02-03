@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
+		1F34E20823E8ABA30042C017 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* MainMenuView.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
@@ -14,9 +16,13 @@
 		1F75A7C423E87CEE0030AC48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */; };
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
+		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
+		B4B0777DD6932A17E29160E5 /* Pods_RecyclingWarsaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
+		1F34E20723E8ABA30042C017 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +32,10 @@
 		1F75A7C523E87CEE0030AC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
+		1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTopView.swift; sourceTree = "<group>"; };
+		3093BCF9DCAA2BB0E06EFAE6 /* Pods-RecyclingWarsaw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.release.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.release.xcconfig"; sourceTree = "<group>"; };
+		9D923B6CAC856B3121662F28 /* Pods-RecyclingWarsaw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.debug.xcconfig"; sourceTree = "<group>"; };
+		B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingWarsaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4B0777DD6932A17E29160E5 /* Pods_RecyclingWarsaw.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +55,8 @@
 			children = (
 				1F75A7B623E87CED0030AC48 /* RecyclingWarsaw */,
 				1F75A7B523E87CED0030AC48 /* Products */,
+				C09E2D4E1F38530B36B680F6 /* Pods */,
+				8EE610DC493EE6725104A283 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,11 +76,31 @@
 				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
 				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
 				1F75A7BB23E87CED0030AC48 /* ViewController.swift */,
+				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
+				1F34E20723E8ABA30042C017 /* MainMenuView.swift */,
+				1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
 				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
 				1F75A7C523E87CEE0030AC48 /* Info.plist */,
 			);
 			path = RecyclingWarsaw;
+			sourceTree = "<group>";
+		};
+		8EE610DC493EE6725104A283 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C09E2D4E1F38530B36B680F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D923B6CAC856B3121662F28 /* Pods-RecyclingWarsaw.debug.xcconfig */,
+				3093BCF9DCAA2BB0E06EFAE6 /* Pods-RecyclingWarsaw.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F75A7C823E87CEE0030AC48 /* Build configuration list for PBXNativeTarget "RecyclingWarsaw" */;
 			buildPhases = (
+				A2F9C24E85AD0B4B0A2EDEE3 /* [CP] Check Pods Manifest.lock */,
 				1F75A7B023E87CED0030AC48 /* Sources */,
 				1F75A7B123E87CED0030AC48 /* Frameworks */,
 				1F75A7B223E87CED0030AC48 /* Resources */,
+				4056D95E6984A0824E77F883 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +170,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4056D95E6984A0824E77F883 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2F9C24E85AD0B4B0A2EDEE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecyclingWarsaw-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F75A7B023E87CED0030AC48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -142,9 +219,12 @@
 			files = (
 				1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */,
 				1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */,
+				1F34E20823E8ABA30042C017 /* MainMenuView.swift in Sources */,
+				1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
+				1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +358,7 @@
 		};
 		1F75A7C923E87CEE0030AC48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D923B6CAC856B3121662F28 /* Pods-RecyclingWarsaw.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +377,7 @@
 		};
 		1F75A7CA23E87CEE0030AC48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3093BCF9DCAA2BB0E06EFAE6 /* Pods-RecyclingWarsaw.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
