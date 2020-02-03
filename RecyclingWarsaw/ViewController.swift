@@ -72,8 +72,8 @@ class ViewController: UIViewController {
         mainMenuView!.snp.makeConstraints { (make) -> Void in
             //make.bottom.e
             make.left.equalTo(view).offset(0)
-            make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)
-            make.bottom.equalTo(viewWithAdd!).offset(0)
+            make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)//.priority jakby cos sie stalo
+            make.bottom.equalTo(viewWithAdd!.snp.top).offset(0)
             make.right.equalTo(view).offset(0)
         }
     }
