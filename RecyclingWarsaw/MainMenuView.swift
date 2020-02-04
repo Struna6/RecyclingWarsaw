@@ -47,6 +47,7 @@ class MainMenuView : UIView{
         button6?.backgroundColor = .orange
         button7?.backgroundColor = .black
         
+        
         setUpLeftVerticalStackView()
         setUpRightVerticalStackView()
         setUpLeftAndRightHorizontalStackView()
@@ -60,8 +61,21 @@ class MainMenuView : UIView{
             $0.right.equalToSuperview().offset(0)
         }
         
-        button1.imageView!.image = UIImage(named: "Yellow")
-//        setUpImage()
+        button1.setImage(UIImage(named: "Yellow"), for: .normal)
+        button2.setImage(UIImage(named: "Brown"), for: .normal)
+        button3.setImage(UIImage(named: "Green"), for: .normal)
+        button4.setImage(UIImage(named: "Gray"), for: .normal)
+        button5.setImage(UIImage(named: "Blue"), for: .normal)
+        button6.setImage(UIImage(named: "Orange"), for: .normal)
+        button7.setImage(UIImage(named: "Black"), for: .normal)
+
+        button1.imageView?.contentMode = .scaleAspectFill
+        button2.imageView?.contentMode = .scaleAspectFill
+        button3.imageView?.contentMode = .scaleAspectFill
+        button4.imageView?.contentMode = .scaleAspectFill
+        button5.imageView?.contentMode = .scaleAspectFill
+        button6.imageView?.contentMode = .scaleAspectFill
+        button7.imageView?.contentMode = .scaleAspectFit
         
     }
     func setUpLeftVerticalStackView(){
@@ -97,13 +111,7 @@ class MainMenuView : UIView{
         leftAndRightAndBottomVerticalStackView.addArrangedSubview(button7)
         leftAndRightAndBottomVerticalStackView.distribution = .fillProportionally
     }
-//    func setUpImage(){
-//        button1.imageView!.snp.makeConstraints { (make) in
-//             make.left.equalTo(button1.snp.left).offset(50)
-//             make.centerY.equalTo(self.button1)
-//             make.width.height.equalTo(100)
-//        }
-//    }
+
     
     private func setupView() {
       backgroundColor = .orange

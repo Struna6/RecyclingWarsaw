@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         //MainMenuView
         mainMenuView = MainMenuView(frame: .zero)
         view.addSubview(mainMenuView!)
-        
+
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
-            make.size.height.equalTo(50)
+            make.height.equalTo(50)
         }
     }
     func setupViewWithAddConstraints(){
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.left.equalTo(view).offset(0)
             make.right.equalTo(view).offset(0)
-            make.size.height.equalTo(90)
+            make.height.equalTo(90)
         }
     }
     
