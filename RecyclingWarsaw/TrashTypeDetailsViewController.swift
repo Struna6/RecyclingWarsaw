@@ -11,15 +11,19 @@ import UIKit
 class TrashTypeDetailsViewController: UIViewController {
 
     var chosenTag : Int?
+    var chosenBackgroundColor : UIColor?
     var viewWithAdd : ViewWithAdd?
     
     var trashCategoryNameLabel : UILabel!
     var trashCategoryImage : UIImageView!
     var categoryDetailsLabel : UILabel!
     
+    var loadDataFromPlist = LoadFromPlistProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        
+        view.backgroundColor = chosenBackgroundColor
         print("Chosen tag is \(chosenTag)")
         
         //ViewWithAdd
@@ -31,11 +35,8 @@ class TrashTypeDetailsViewController: UIViewController {
         trashCategoryImage = UIImageView()
         categoryDetailsLabel = UILabel()
         
-        
-        view.backgroundColor = .green
-        
         trashCategoryNameLabel.backgroundColor = .yellow
-        trashCategoryNameLabel.text = "Szkło"
+        trashCategoryNameLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.name
         trashCategoryNameLabel.textAlignment = .center
         trashCategoryNameLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 30)
         
@@ -43,12 +44,15 @@ class TrashTypeDetailsViewController: UIViewController {
         trashCategoryImage.contentMode = .scaleAspectFit
         trashCategoryImage.backgroundColor = .gray
         
-        categoryDetailsLabel.text = "Szklane butelki, szklane okulary, szyby, szklane kubki, szklanki, produktu zrobiobne ze szkła i inne szklane rzeczy"
-        categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 18)
+        categoryDetailsLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.description
+        print(categoryDetailsLabel.text)
+        
+        categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 15)
+        categoryDetailsLabel.adjustsFontSizeToFitWidth = true
         categoryDetailsLabel.textAlignment = .center
         categoryDetailsLabel.backgroundColor = .purple
         categoryDetailsLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        categoryDetailsLabel.numberOfLines = 5
+        categoryDetailsLabel.numberOfLines = 0
         
         view.addSubview(trashCategoryNameLabel)
         view.addSubview(trashCategoryImage)

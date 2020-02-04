@@ -104,6 +104,7 @@ extension ViewController : TilesViewDelegate
     func tileTapped(chosenTag: Int){
          let detailsVC = TrashTypeDetailsViewController()
          detailsVC.chosenTag = chosenTag
+         detailsVC.chosenBackgroundColor = tileColors[chosenTag-1]
          present(detailsVC, animated: true, completion: nil)
      }
 }
