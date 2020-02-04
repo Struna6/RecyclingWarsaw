@@ -39,13 +39,13 @@ class MainMenuView : UIView{
         button7 = UIButton(frame: .zero)
         
         
-        button1?.backgroundColor = .yellow
-        button2?.backgroundColor = .brown
-        button3?.backgroundColor = .green
-        button4?.backgroundColor = .blue
-        button5?.backgroundColor = .gray
-        button6?.backgroundColor = .orange
-        button7?.backgroundColor = .black
+        button1?.backgroundColor = UIColor(red:254/255, green:183/255, blue:43/255, alpha:1.00)//.yellow
+        button2?.backgroundColor = UIColor(red:153/255, green:95/255, blue:53/255, alpha:1.00)//.brown
+        button3?.backgroundColor = UIColor(red:59/255, green:175/255, blue:40/255, alpha:1.00)//.green
+        button4?.backgroundColor = UIColor(red:83/255, green:88/255, blue:90/255, alpha:1.00)//.gray
+        button5?.backgroundColor = UIColor(red:16/255, green:113/255, blue:206/255, alpha:1.00)//.blue
+        button6?.backgroundColor = UIColor(red:252/255, green:102/255, blue:32/255, alpha:1.00)//.orange
+        button7?.backgroundColor = UIColor(red:36/255, green:33/255, blue:33/255, alpha:1.00) //.black
         
         
         setUpLeftVerticalStackView()
@@ -61,20 +61,21 @@ class MainMenuView : UIView{
             $0.right.equalToSuperview().offset(0)
         }
         
-        button1.setImage(UIImage(named: "Yellow"), for: .normal)
-        button2.setImage(UIImage(named: "Brown"), for: .normal)
-        button3.setImage(UIImage(named: "Green"), for: .normal)
-        button4.setImage(UIImage(named: "Gray"), for: .normal)
-        button5.setImage(UIImage(named: "Blue"), for: .normal)
-        button6.setImage(UIImage(named: "Orange"), for: .normal)
-        button7.setImage(UIImage(named: "Black"), for: .normal)
+        button1.setImage(UIImage(named: "Metale"), for: .normal)
+        
+        button2.setImage(UIImage(named: "Bio"), for: .normal)
+        button3.setImage(UIImage(named: "Szkło"), for: .normal)
+        button4.setImage(UIImage(named: "Zielone"), for: .normal)
+        button5.setImage(UIImage(named: "Papier"), for: .normal)
+        button6.setImage(UIImage(named: "Wielkogabarytowe"), for: .normal)
+        button7.setImage(UIImage(named: "Zmieszane"), for: .normal)
 
-        button1.imageView?.contentMode = .scaleAspectFill
-        button2.imageView?.contentMode = .scaleAspectFill
-        button3.imageView?.contentMode = .scaleAspectFill
-        button4.imageView?.contentMode = .scaleAspectFill
-        button5.imageView?.contentMode = .scaleAspectFill
-        button6.imageView?.contentMode = .scaleAspectFill
+        button1.imageView?.contentMode = .scaleAspectFit
+        button2.imageView?.contentMode = .scaleAspectFit
+        button3.imageView?.contentMode = .scaleAspectFit
+        button4.imageView?.contentMode = .scaleAspectFit
+        button5.imageView?.contentMode = .scaleAspectFit
+        button6.imageView?.contentMode = .scaleAspectFit
         button7.imageView?.contentMode = .scaleAspectFit
         
     }
