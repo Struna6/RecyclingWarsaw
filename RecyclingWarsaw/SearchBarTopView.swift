@@ -34,7 +34,8 @@ class SearchBarTopView : UIView{
         searchBar!.snp.makeConstraints { (make) -> Void in
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(10)
-            make.size.equalTo(CGSize(width: frame.width - 20, height: 30))
+            make.right.equalToSuperview().offset(-10)
+            make.size.height.equalTo(30)
         }
     }
 }

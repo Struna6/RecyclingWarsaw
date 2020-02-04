@@ -19,18 +19,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //SearchBarTopView
-        searchBarTopView = SearchBarTopView(frame: CGRect(x: 0, y: 0, width: view.frame.width - 20, height: 0))
+        searchBarTopView = SearchBarTopView(frame: .zero)
         view.addSubview(searchBarTopView!)
         
         //ViewController
         view.backgroundColor = .red
         
         //MainMenuView
-        mainMenuView = MainMenuView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
+        mainMenuView = MainMenuView(frame: .zero)
         view.addSubview(mainMenuView!)
         
         //ViewWithAdd
-        viewWithAdd = ViewWithAdd(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
+        viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
         
         //TrashHintsLoaderImpl
@@ -57,14 +57,16 @@ class ViewController: UIViewController {
         searchBarTopView!.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.left.equalTo(view).offset(10)
-            make.size.equalTo(CGSize(width: view.frame.width - 20, height: 50))
+            make.right.equalTo(view).offset(-10)
+            make.size.height.equalTo(50)
         }
     }
     func setupViewWithAddConstraints(){
         viewWithAdd!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.left.equalTo(view).offset(0)
-            make.size.equalTo(CGSize(width: view.frame.width, height: 90))
+            make.right.equalTo(view).offset(0)
+            make.size.height.equalTo(90)
         }
     }
     

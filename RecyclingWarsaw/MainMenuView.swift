@@ -60,6 +60,9 @@ class MainMenuView : UIView{
             $0.right.equalToSuperview().offset(0)
         }
         
+        button1.imageView!.image = UIImage(named: "Yellow")
+//        setUpImage()
+        
     }
     func setUpLeftVerticalStackView(){
         leftVerticalStackView = UIStackView()
@@ -94,7 +97,13 @@ class MainMenuView : UIView{
         leftAndRightAndBottomVerticalStackView.addArrangedSubview(button7)
         leftAndRightAndBottomVerticalStackView.distribution = .fillProportionally
     }
-    
+//    func setUpImage(){
+//        button1.imageView!.snp.makeConstraints { (make) in
+//             make.left.equalTo(button1.snp.left).offset(50)
+//             make.centerY.equalTo(self.button1)
+//             make.width.height.equalTo(100)
+//        }
+//    }
     
     private func setupView() {
       backgroundColor = .orange
