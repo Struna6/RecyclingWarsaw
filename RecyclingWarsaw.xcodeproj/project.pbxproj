@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
-		1F34E20823E8ABA30042C017 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* MainMenuView.swift */; };
+		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
@@ -17,12 +17,13 @@
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
 		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
+		1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */; };
 		B4B0777DD6932A17E29160E5 /* Pods_RecyclingWarsaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
-		1F34E20723E8ABA30042C017 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
 		1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTopView.swift; sourceTree = "<group>"; };
+		1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTypeDetailsViewController.swift; sourceTree = "<group>"; };
 		3093BCF9DCAA2BB0E06EFAE6 /* Pods-RecyclingWarsaw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.release.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.release.xcconfig"; sourceTree = "<group>"; };
 		9D923B6CAC856B3121662F28 /* Pods-RecyclingWarsaw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.debug.xcconfig"; sourceTree = "<group>"; };
 		B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingWarsaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,8 +78,9 @@
 				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
 				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
 				1F75A7BB23E87CED0030AC48 /* ViewController.swift */,
+				1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */,
 				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
-				1F34E20723E8ABA30042C017 /* MainMenuView.swift */,
+				1F34E20723E8ABA30042C017 /* TilesView.swift */,
 				1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
 				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
@@ -219,9 +222,10 @@
 			files = (
 				1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */,
 				1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */,
-				1F34E20823E8ABA30042C017 /* MainMenuView.swift in Sources */,
+				1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */,
 				1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
+				1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
 				1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */,

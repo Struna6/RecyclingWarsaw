@@ -9,7 +9,10 @@
 import Foundation
 import UIKit
 
-class MainMenuView : UIView{
+class TilesView : UIView{
+    
+   weak var delegate : TilesViewDelegate?
+   weak var dataSource : TilesViewDataSource?
     
     var button1 : UIButton!
     var button2 : UIButton!
@@ -35,16 +38,7 @@ class MainMenuView : UIView{
         button5 = UIButton(frame: .zero)
         button6 = UIButton(frame: .zero)
         button7 = UIButton(frame: .zero)
-        
-        
-        button1?.backgroundColor = UIColor(red:254/255, green:183/255, blue:43/255, alpha:1.00)//.yellow
-        button2?.backgroundColor = UIColor(red:153/255, green:95/255, blue:53/255, alpha:1.00)//.brown
-        button3?.backgroundColor = UIColor(red:59/255, green:175/255, blue:40/255, alpha:1.00)//.green
-        button4?.backgroundColor = UIColor(red:83/255, green:88/255, blue:90/255, alpha:1.00)//.gray
-        button5?.backgroundColor = UIColor(red:16/255, green:113/255, blue:206/255, alpha:1.00)//.blue
-        button6?.backgroundColor = UIColor(red:252/255, green:102/255, blue:32/255, alpha:1.00)//.orange
-        button7?.backgroundColor = UIColor(red:36/255, green:33/255, blue:33/255, alpha:1.00) //.black
-        
+    
         
         setUpLeftVerticalStackView()
         setUpRightVerticalStackView()
@@ -58,32 +52,30 @@ class MainMenuView : UIView{
             $0.bottom.equalToSuperview().offset(0)
             $0.right.equalToSuperview().offset(0)
         }
-        
-        button1.setImage(UIImage(named: "Metale"), for: .normal)
-        
-        button2.setImage(UIImage(named: "Bio"), for: .normal)
-        button3.setImage(UIImage(named: "Szkło"), for: .normal)
-        button4.setImage(UIImage(named: "Zielone"), for: .normal)
-        button5.setImage(UIImage(named: "Papier"), for: .normal)
-        button6.setImage(UIImage(named: "Wielkogabarytowe"), for: .normal)
-        button7.setImage(UIImage(named: "Zmieszane"), for: .normal)
-        
-        button1.imageView?.contentMode = .scaleAspectFit
-        button2.imageView?.contentMode = .scaleAspectFit
-        button3.imageView?.contentMode = .scaleAspectFit
-        button4.imageView?.contentMode = .scaleAspectFit
-        button5.imageView?.contentMode = .scaleAspectFit
-        button6.imageView?.contentMode = .scaleAspectFit
-        button7.imageView?.contentMode = .scaleAspectFit
-        
-        button1.setBackgroundColor(color: (button1.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button2.setBackgroundColor(color: (button2.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button3.setBackgroundColor(color: (button3.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button4.setBackgroundColor(color: (button4.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button5.setBackgroundColor(color: (button5.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button6.setBackgroundColor(color: (button6.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button7.setBackgroundColor(color: (button7.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
+    }
+    func setUpButtons(){
+        setUpButton(button: button1, chosenTag: 1)
+        setUpButton(button: button2, chosenTag: 2)
+        setUpButton(button: button3, chosenTag: 3)
+        setUpButton(button: button4, chosenTag: 4)
+        setUpButton(button: button5, chosenTag: 5)
+        setUpButton(button: button6, chosenTag: 6)
+        setUpButton(button: button7, chosenTag: 7)
+    }
     
+    func setUpButton(button : UIButton,chosenTag:Int){
+        print(dataSource)
+        button.tag = chosenTag
+        button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1)
+        button.setImage(dataSource?.getImage(index: chosenTag - 1), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
+        button.addTarget(self, action: #selector(actionWithParam(sender:)), for: .touchUpInside)
+
+    }
+    @objc func actionWithParam(sender: UIButton){
+        print("Pressed \(sender.tag)")
+        (delegate as! ViewController).tileTapped(chosenTag: sender.tag)
     }
     func setUpLeftVerticalStackView(){
         leftVerticalStackView = UIStackView()
