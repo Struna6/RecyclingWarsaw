@@ -40,7 +40,7 @@ class TrashTypeDetailsViewController: UIViewController {
         trashCategoryNameLabel.textAlignment = .center
         trashCategoryNameLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 30)
         
-        trashCategoryImage.image = UIImage(named: "Szkło")
+        trashCategoryImage.image = UIImage(named: loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)!.imageName!)
         trashCategoryImage.contentMode = .scaleAspectFit
         trashCategoryImage.backgroundColor = .gray
         

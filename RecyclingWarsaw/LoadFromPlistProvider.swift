@@ -28,4 +28,5 @@ class LoadFromPlistProvider {
 class TrashDetails : Decodable{
     var name : String?
     var description : String?
+    var imageName : String?
 }

@@ -7,42 +7,56 @@
 		<string>Metale i tworzywa sztuczne</string>
 		<key>description</key>
 		<string> (kolor pojemników lub naklejek informacyjnych oraz worków – żółty ), wrzucamy np.: puste, zgniecione butelki plastikowe, zakrętki od butelek i słoików, plastikowe opakowania, torebki, worki foliowe, kartony po sokach i mleku (tzw. tetrapaki), zgniecione puszki po napojach i żywności</string>
+		<key>imageName</key>
+		<string>MetaleNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Bio</string>
 		<key>description</key>
 		<string>(kolor pojemników lub naklejek informacyjnych oraz worków – brązowy ), wrzucamy np.: odpadki warzywne i owocowe, skorupki jaj, fusy po kawie i herbacie, zwiędłe kwiaty oraz rośliny doniczkowe, resztki jedzenia bez mięsa, kości oraz tłuszczów zwierzęcych</string>
+		<key>imageName</key>
+		<string>BioNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Szkło</string>
 		<key>description</key>
 		<string>(kolor pojemników lub naklejek informacyjnych oraz worków – zielony ), wrzucamy np.: puste, szklane butelki, słoiki, szklane opakowania po kosmetykach, puste szklane opakowania po lekach</string>
+		<key>imageName</key>
+		<string>SzkłoNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Zielone</string>
 		<key>description</key>
 		<string> (kolor worków lub naklejek informacyjnych – szary ), np.: liście, skoszona trawa, rozdrobnione gałęzie (odbiór od marca do listopada)</string>
+		<key>imageName</key>
+		<string>ZieloneNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Papier</string>
 		<key>description</key>
 		<string>(kolor pojemników lub naklejek informacyjnych oraz worków – niebieski, wrzucamy np.: czyste opakowania z papieru i tektury, gazety, czasopisma i ulotki, kartony, zeszyty, papier biurowy</string>
+		<key>imageName</key>
+		<string>PapierNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Odpady wielkogabarytowe</string>
 		<key>description</key>
 		<string>stare meble (także rozłożone na części) oraz wyroby tapicerskie (np. fotele, wersalki, pufy), materace, zabawki dużych rozmiarów.Pamiętaj: zapytaj swojego administratora, gdzie znajdziesz miejsce przeznaczone do składowania odpadów wielkogabarytowych</string>
+		<key>imageName</key>
+		<string>WielkogabarytoweNoWords</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Odpady zmieszane</string>
 		<key>description</key>
 		<string>(kolor pojemników lub naklejek informacyjnych oraz worków – czarny); odpady pozostałe po wysegregowaniu pozostałych frakcji, czyli tylko to czego udało się rozdzielić do wymienionych pojemników na odpady segregowane lub czego nie można oddać do Punktu Selektywnej Zbiórki Odpadów Komunalnych, tzw. PSZOK</string>
+		<key>imageName</key>
+		<string>ZmieszaneNoWords</string>
 	</dict>
 </array>
 </plist>
