@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         view.addSubview(searchBarTopView!)
         
         //ViewController
-        view.backgroundColor = .red
+        view.backgroundColor = .white //HelpfulColor
         
         //MainMenuView
         tilesView = TilesView(frame: .zero)

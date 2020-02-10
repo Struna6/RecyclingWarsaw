@@ -35,14 +35,14 @@ class TrashTypeDetailsViewController: UIViewController {
         trashCategoryImage = UIImageView()
         categoryDetailsLabel = UILabel()
         
-        trashCategoryNameLabel.backgroundColor = .yellow
+        //trashCategoryNameLabel.backgroundColor = .yellow //HelpfulColor
         trashCategoryNameLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.name
         trashCategoryNameLabel.textAlignment = .center
         trashCategoryNameLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 30)
         
         trashCategoryImage.image = UIImage(named: loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)!.imageName!)
         trashCategoryImage.contentMode = .scaleAspectFit
-        trashCategoryImage.backgroundColor = .gray
+        //trashCategoryImage.backgroundColor = .gray //HelpfulColor
         
         categoryDetailsLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.description
         print(categoryDetailsLabel.text)
@@ -50,13 +50,18 @@ class TrashTypeDetailsViewController: UIViewController {
         categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 15)
         categoryDetailsLabel.adjustsFontSizeToFitWidth = true
         categoryDetailsLabel.textAlignment = .center
-        categoryDetailsLabel.backgroundColor = .purple
+        //categoryDetailsLabel.backgroundColor = .purple //HelpfulColor
         categoryDetailsLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         categoryDetailsLabel.numberOfLines = 0
         
         view.addSubview(trashCategoryNameLabel)
         view.addSubview(trashCategoryImage)
         view.addSubview(categoryDetailsLabel)
+        
+
+        trashCategoryNameLabel.textColor = .white
+        categoryDetailsLabel.textColor = .white
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
