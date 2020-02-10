@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Hello we work here")
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
         searchBarTopView!.searchBar?.delegate = self
