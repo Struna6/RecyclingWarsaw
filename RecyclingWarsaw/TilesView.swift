@@ -53,6 +53,7 @@ class TilesView : UIView{
             $0.right.equalToSuperview().offset(0)
         }
     }
+    
     func setUpButtons(){
         setUpButton(button: button1, chosenTag: 1)
         setUpButton(button: button2, chosenTag: 2)
@@ -73,10 +74,12 @@ class TilesView : UIView{
         button.addTarget(self, action: #selector(actionWithParam(sender:)), for: .touchUpInside)
 
     }
+    
     @objc func actionWithParam(sender: UIButton){
         print("Pressed \(sender.tag)")
         (delegate as! ViewController).tileTapped(chosenTag: sender.tag)
     }
+    
     func setUpLeftVerticalStackView(){
         leftVerticalStackView = UIStackView()
         leftVerticalStackView.axis = .vertical
@@ -86,6 +89,7 @@ class TilesView : UIView{
         leftVerticalStackView.spacing = 0
         leftVerticalStackView.distribution = .fillEqually
     }
+    
     func setUpRightVerticalStackView(){
         rightVerticalStackView = UIStackView()
         rightVerticalStackView.axis = .vertical
@@ -95,6 +99,7 @@ class TilesView : UIView{
         rightVerticalStackView.spacing = 0
         rightVerticalStackView.distribution = .fillEqually
     }
+    
     func setUpLeftAndRightHorizontalStackView(){
        leftAndRightHorizontalStackView = UIStackView()
        leftAndRightHorizontalStackView.axis = .horizontal
@@ -103,6 +108,7 @@ class TilesView : UIView{
        leftAndRightHorizontalStackView.spacing = 0
        leftAndRightHorizontalStackView.distribution = .fillEqually
    }
+    
     func setUpLeftAndRightAndBottomVerticalStackView(){
         leftAndRightAndBottomVerticalStackView = UIStackView()
         leftAndRightAndBottomVerticalStackView.axis = .vertical
@@ -110,7 +116,6 @@ class TilesView : UIView{
         leftAndRightAndBottomVerticalStackView.addArrangedSubview(button7)
         leftAndRightAndBottomVerticalStackView.distribution = .fillProportionally
     }
-
     
     private func setupView() {
       backgroundColor = .orange
@@ -122,7 +127,6 @@ class TilesView : UIView{
 }
 
 extension UIColor {
-
     func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
         return self.adjust(by: abs(percentage) )
     }
@@ -143,6 +147,7 @@ extension UIColor {
         }
     }
 }
+
 extension UIButton {
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         self.clipsToBounds = true  // add this to maintain corner radius

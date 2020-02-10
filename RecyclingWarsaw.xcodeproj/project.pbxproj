@@ -17,6 +17,8 @@
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
 		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
+		1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */; };
+		1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */; };
 		1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */; };
 		1FFC202323E9D6DE007E99F1 /* TrashDetails.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */; };
 		1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */; };
@@ -36,6 +38,8 @@
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
 		1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTopView.swift; sourceTree = "<group>"; };
+		1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTableView.swift; sourceTree = "<group>"; };
+		1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintCell.swift; sourceTree = "<group>"; };
 		1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTypeDetailsViewController.swift; sourceTree = "<group>"; };
 		1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TrashDetails.plist; sourceTree = "<group>"; };
 		1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFromPlistProvider.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
 				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
 				1F75A7BB23E87CED0030AC48 /* ViewController.swift */,
+				1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */,
+				1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */,
 				1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */,
 				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
 				1F34E20723E8ABA30042C017 /* TilesView.swift */,
@@ -230,6 +236,8 @@
 				1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */,
 				1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */,
 				1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */,
+				1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */,
+				1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */,
 				1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
 				1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */,

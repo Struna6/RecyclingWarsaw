@@ -35,7 +35,6 @@ class SearchBarTopView : UIView{
             make.top.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(0)
-            //make.size.height.equalTo(30)
         }
     }
 }
