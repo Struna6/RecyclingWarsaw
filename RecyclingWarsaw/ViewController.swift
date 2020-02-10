@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     var searchBarTopView : SearchBarTopView?
     var viewWithAdd : ViewWithAdd?
     var tilesView : TilesView?
+    var blurEffectView : UIVisualEffectView?
+    
     
     var tileColors = [UIColor(red:254/255, green:183/255, blue:43/255, alpha:1.00),UIColor(red:153/255, green:95/255, blue:53/255, alpha:1.00),UIColor(red:59/255, green:175/255, blue:40/255, alpha:1.00), UIColor(red:83/255, green:88/255, blue:90/255, alpha:1.00), UIColor(red:16/255, green:113/255, blue:206/255, alpha:1.00),UIColor(red:252/255, green:102/255, blue:32/255, alpha:1.00),UIColor(red:36/255, green:33/255, blue:33/255, alpha:1.00)]
     var tileImages = [UIImage(named: "Metale"),UIImage(named: "Bio"),UIImage(named: "Szkło"),UIImage(named: "Zielone"),UIImage(named: "Papier"),UIImage(named: "Wielkogabarytowe"),UIImage(named: "Zmieszane")]
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
+        searchBarTopView!.searchBar?.delegate = self
         view.addSubview(searchBarTopView!)
         
         //ViewController
@@ -49,6 +52,18 @@ class ViewController: UIViewController {
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
         
+        //BlurEffectView
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView!.frame = view.bounds
+        view.addSubview(blurEffectView!)
+        blurEffectView?.isHidden = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnBlur))
+        tap.numberOfTapsRequired = 1
+        blurEffectView!.addGestureRecognizer(tap)
+        
+        
         //TrashHintsLoaderImpl
         trashHintsLoaderImpl = TrashHintsLoaderImpl()
         trashHintsLoaderImpl?.loadTrashHints(text: "Cera", completion: { (elements) in
@@ -63,10 +78,17 @@ class ViewController: UIViewController {
         })
     }
     
+    @objc func tapOnBlur() {
+        blurEffectView?.isHidden = true
+        searchBarTopView?.searchBar!.resignFirstResponder()
+        searchBarTopView?.searchBar!.text = ""
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         setupSearchBarTopViewConstraints()
         setupViewWithAddConstraints()
         setupMainMenuViewConstraints()
+        setupblurEffectViewConstraints()
         
         tilesView?.setUpButtons()
     }
@@ -79,6 +101,7 @@ class ViewController: UIViewController {
             make.height.equalTo(50)
         }
     }
+    
     func setupViewWithAddConstraints(){
         viewWithAdd!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(0)
@@ -90,7 +113,15 @@ class ViewController: UIViewController {
     
     func setupMainMenuViewConstraints(){
         tilesView!.snp.makeConstraints { (make) -> Void in
-            //make.bottom.e
+            make.left.equalTo(view).offset(0)
+            make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)//.priority jakby cos sie stalo
+            make.bottom.equalTo(viewWithAdd!.snp.top).offset(0)
+            make.right.equalTo(view).offset(0)
+        }
+    }
+    
+    func setupblurEffectViewConstraints(){
+        blurEffectView!.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view).offset(0)
             make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)//.priority jakby cos sie stalo
             make.bottom.equalTo(viewWithAdd!.snp.top).offset(0)
@@ -115,5 +146,10 @@ extension ViewController : TilesViewDataSource{
     
     func getBackgroundColor(index: Int) -> UIColor {
         return tileColors[index]
+    }
+}
+extension ViewController : UISearchBarDelegate{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        blurEffectView?.isHidden = false
     }
 }
