@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ViewWithTableView : UIView{
-    var tableView : UITableView?
+class ViewWithTableView: UIView{
+    var tableView: UITableView?
     
     override init(frame: CGRect) {
       super.init(frame: frame)

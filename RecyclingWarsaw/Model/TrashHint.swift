@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrashHint : Decodable{
-    var label : String
-    var url : String
+class TrashHint: Decodable{
+    var label: String
+    var url: String
 }

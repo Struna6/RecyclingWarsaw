@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-class TrashHintCell : UITableViewCell{
-    var trashNameLabel : UILabel!
+class TrashHintCell: UITableViewCell{
+    var trashNameLabel: UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
        super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -10,13 +10,13 @@ import UIKit
 
 class TrashTypeDetailsViewController: UIViewController {
 
-    var chosenTag : Int?
-    var chosenBackgroundColor : UIColor?
-    var viewWithAdd : ViewWithAdd?
+    var chosenTag: Int?
+    var chosenBackgroundColor: UIColor?
+    var viewWithAdd: ViewWithAdd?
     
-    var trashCategoryNameLabel : UILabel!
-    var trashCategoryImage : UIImageView!
-    var categoryDetailsLabel : UILabel!
+    var trashCategoryNameLabel: UILabel!
+    var trashCategoryImage: UIImageView!
+    var categoryDetailsLabel: UILabel!
     
     var loadDataFromPlist = LoadFromPlistProvider()
     

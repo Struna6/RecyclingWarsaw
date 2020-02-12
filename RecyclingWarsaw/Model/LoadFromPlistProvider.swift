@@ -17,7 +17,7 @@ class LoadFromPlistProvider {
             do{
                 let trashDetails = try decoder.decode([TrashDetails].self, from: data)
                 return trashDetails[index]
-            } catch{
+            }catch{
                 print("Error decoding item array: \(error)")
             }
         }
@@ -25,10 +25,10 @@ class LoadFromPlistProvider {
     }
 }
 
-class TrashDetails : Decodable{
-    var name : String?
-    var description : String?
-    var imageName : String?
-    var color : String?
-    var tileImageName : String?
+class TrashDetails: Decodable{
+    var name: String?
+    var description: String?
+    var imageName: String?
+    var color: String?
+    var tileImageName: String?
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewWithAdd : UIView{
+class ViewWithAdd: UIView{
     
     override init(frame: CGRect) {
       super.init(frame: frame)

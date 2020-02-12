@@ -9,23 +9,23 @@
 import Foundation
 import UIKit
 
-class TilesView : UIView{
+class TilesView: UIView{
     
-   weak var delegate : TilesViewDelegate?
-   weak var dataSource : TilesViewDataSource?
+   weak var delegate: TilesViewDelegate?
+   weak var dataSource: TilesViewDataSource?
     
-    var button1 : UIButton!
-    var button2 : UIButton!
-    var button3 : UIButton!
-    var button4 : UIButton!
-    var button5 : UIButton!
-    var button6 : UIButton!
-    var button7 : UIButton!
+    var button1: UIButton!
+    var button2: UIButton!
+    var button3: UIButton!
+    var button4: UIButton!
+    var button5: UIButton!
+    var button6: UIButton!
+    var button7: UIButton!
     
-    var leftVerticalStackView : UIStackView!
-    var rightVerticalStackView : UIStackView!
-    var leftAndRightHorizontalStackView : UIStackView!
-    var leftAndRightAndBottomVerticalStackView : UIStackView!
+    var leftVerticalStackView: UIStackView!
+    var rightVerticalStackView: UIStackView!
+    var leftAndRightHorizontalStackView: UIStackView!
+    var leftAndRightAndBottomVerticalStackView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +64,7 @@ class TilesView : UIView{
         setUpButton(button: button7, chosenTag: 7)
     }
     
-    func setUpButton(button : UIButton,chosenTag:Int){
+    func setUpButton(button: UIButton, chosenTag:Int){
         button.tag = chosenTag
         button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1)
         button.setImage(dataSource?.getImage(index: chosenTag - 1), for: .normal)
@@ -141,7 +141,7 @@ extension UIColor {
                            green: min(green + percentage/100, 1.0),
                            blue: min(blue + percentage/100, 1.0),
                            alpha: alpha)
-        } else {
+        }else{
             return nil
         }
     }

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SearchBarTopView : UIView{
-    var searchBar : UISearchBar?
+class SearchBarTopView: UIView{
+    var searchBar: UISearchBar?
     
     override init(frame: CGRect) {
       super.init(frame: frame)

@@ -22,7 +22,7 @@ extension String {
                 for byte in bytesOfChar {
                     returnStr += "%" + String(format: "%02hhX", byte as CVarArg)
                 }
-            } else {
+            }else{
                 returnStr += charStr
             }
         }

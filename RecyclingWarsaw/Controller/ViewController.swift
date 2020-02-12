@@ -9,23 +9,23 @@
 import UIKit
 import SnapKit
 
-protocol TilesViewDelegate : class{
+protocol TilesViewDelegate: class{
     func tileTapped(chosenTag: Int)
 }
-protocol TilesViewDataSource : class{
+protocol TilesViewDataSource: class{
     func getImage(index: Int) -> UIImage
     func getBackgroundColor(index:Int) -> UIColor
 }
 
 class ViewController: UIViewController {
-    var trashHintsLoaderImpl : TrashHintsLoader?
-    var searchBarTopView : SearchBarTopView?
-    var viewWithAdd : ViewWithAdd?
-    var tilesView : TilesView?
-    var blurEffectView : UIVisualEffectView?
-    var viewWithTableView : ViewWithTableView?
+    var trashHintsLoaderImpl: TrashHintsLoader?
+    var searchBarTopView: SearchBarTopView?
+    var viewWithAdd: ViewWithAdd?
+    var tilesView: TilesView?
+    var blurEffectView: UIVisualEffectView?
+    var viewWithTableView: ViewWithTableView?
     var cellHeight = 60.0
-    var trashHints : [TrashHint]?
+    var trashHints: [TrashHint]?
     var loadDataFromPlist = LoadFromPlistProvider()
     
     override func viewDidLoad() {
@@ -148,7 +148,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : TilesViewDelegate
+extension ViewController: TilesViewDelegate
 {
     func tileTapped(chosenTag: Int){
          let detailsVC = TrashTypeDetailsViewController()
@@ -158,7 +158,7 @@ extension ViewController : TilesViewDelegate
      }
 }
 
-extension ViewController : TilesViewDataSource{
+extension ViewController: TilesViewDataSource{
     func getImage(index: Int) -> UIImage {
         return UIImage(named:(loadDataFromPlist.loadInfoFromPlist(index: index)?.tileImageName!)!)!
     }
@@ -168,7 +168,7 @@ extension ViewController : TilesViewDataSource{
     }
 }
 
-extension ViewController : UISearchBarDelegate{
+extension ViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         blurEffectView?.isHidden = false
     }
@@ -206,8 +206,7 @@ extension ViewController : UISearchBarDelegate{
                         }
                         self.viewWithTableView?.tableView?.isScrollEnabled = false
                     }
-                }
-                else{
+                }else{
                     print("dupa nil")
                 }
             })
@@ -217,13 +216,10 @@ extension ViewController : UISearchBarDelegate{
     }
 }
 
-extension ViewController : UITableViewDataSource,UITableViewDelegate{
+extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if trashHints != nil{
-            return trashHints!.count
-        }else{
-            return 0
-        }
+        guard trashHints != nil else {return 0}
+        return trashHints!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
