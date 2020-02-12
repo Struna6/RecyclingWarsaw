@@ -71,7 +71,7 @@ class ViewController: UIViewController {
     }
     
     func setUpBlurEffectView(){
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView!.frame = view.bounds
         view.addSubview(blurEffectView!)
@@ -175,36 +175,36 @@ extension ViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count >= 1{
-            trashHintsLoaderImpl?.loadTrashHints(text: searchText, completion: { (elements) in
+            trashHintsLoaderImpl?.loadTrashHints(text: searchText, completion: { [weak self] (elements) in
                 guard searchBar.text!.count >= 1 else {
-                    self.viewWithTableView?.isHidden = true
+                    self?.viewWithTableView?.isHidden = true
                     return
                 }
                 if elements != nil {
                     for el in elements!{
                         print(el.label)
                     }
-                    self.trashHints = elements
-                    self.viewWithTableView?.tableView?.reloadData()
-                    self.viewWithTableView?.isHidden = false
+                    self?.trashHints = elements
+                    self?.viewWithTableView?.tableView?.reloadData()
+                    self?.viewWithTableView?.isHidden = false
                     
                     //Zmiana wysokości viewWithTableView
-                    let frameHeight = self.view.frame.height
-                    let howManyCellsCanBeVisible = floor(((Double(frameHeight))/2)/self.cellHeight)
-                    let calculatedHeight = floor(((Double(frameHeight))/2)/self.cellHeight)*self.cellHeight
+                    let frameHeight = self?.view.frame.height
+                    let howManyCellsCanBeVisible = floor(((Double(frameHeight!))/2)/(self?.cellHeight ?? 1.0))
+                    let calculatedHeight = floor(((Double(frameHeight ?? 1.0))/2)/(self?.cellHeight ?? 1.0))*(self?.cellHeight ?? 1.0)
                     
-                    if self.trashHints!.count > Int(howManyCellsCanBeVisible){
+                    if self?.trashHints!.count ?? 0 > Int(howManyCellsCanBeVisible){
                         //maksymalna wysokosc i pozwol na scrollowanie
-                        self.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
+                        self?.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
                             make.height.equalTo(calculatedHeight)
                         }
-                        self.viewWithTableView?.tableView?.isScrollEnabled = true
+                        self?.viewWithTableView?.tableView?.isScrollEnabled = true
                     }else{
                         //obliczona dla malej liczby elementow wysokosc i nie pozwalaj na scrollowanie
-                        self.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
-                            make.height.equalTo(self.trashHints!.count * Int(self.cellHeight))
+                        self?.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
+                            make.height.equalTo((self?.trashHints!.count ?? 1) * Int(self?.cellHeight ?? 1.0))
                         }
-                        self.viewWithTableView?.tableView?.isScrollEnabled = false
+                        self?.viewWithTableView?.tableView?.isScrollEnabled = false
                     }
                 }else{
                     print("dupa nil")
