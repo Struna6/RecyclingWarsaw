@@ -10,21 +10,16 @@ import UIKit
 
 class TrashTypeDetailsViewController: UIViewController {
 
-    var chosenTag: Int?
-    var chosenBackgroundColor: UIColor?
     var viewWithAdd: ViewWithAdd?
-    
     var trashCategoryNameLabel: UILabel!
     var trashCategoryImage: UIImageView!
     var categoryDetailsLabel: UILabel!
-    
-    var loadDataFromPlist = LoadFromPlistProvider()
+    var trashFromVC : TrashDetails?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = chosenBackgroundColor
-        print("Chosen tag is \(String(describing: chosenTag))")
+        view.backgroundColor = UIColor(hexString:(trashFromVC!.color!))
         
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
@@ -48,7 +43,7 @@ class TrashTypeDetailsViewController: UIViewController {
     func setUpTrashCategoryNameLabel(){
         trashCategoryNameLabel = UILabel()
         //trashCategoryNameLabel.backgroundColor = .yellow //HelpfulColor
-        trashCategoryNameLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.name
+        trashCategoryNameLabel.text = trashFromVC!.name
         trashCategoryNameLabel.textAlignment = .center
         trashCategoryNameLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 30)
         view.addSubview(trashCategoryNameLabel)
@@ -57,7 +52,7 @@ class TrashTypeDetailsViewController: UIViewController {
     
     func setUpTrashCategoryImage(){
         trashCategoryImage = UIImageView()
-        trashCategoryImage.image = UIImage(named: loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)!.imageName!)
+        trashCategoryImage.image = UIImage(named: trashFromVC!.imageName!)
         trashCategoryImage.contentMode = .scaleAspectFit
         //trashCategoryImage.backgroundColor = .gray //HelpfulColor
         view.addSubview(trashCategoryImage)
@@ -65,7 +60,7 @@ class TrashTypeDetailsViewController: UIViewController {
     
     func setUpCategoryDetailsLabel(){
         categoryDetailsLabel = UILabel()
-        categoryDetailsLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.description
+        categoryDetailsLabel.text = trashFromVC!.description
         categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 15)
         categoryDetailsLabel.adjustsFontSizeToFitWidth = true
         categoryDetailsLabel.textAlignment = .center

@@ -27,9 +27,12 @@ class ViewController: UIViewController {
     var cellHeight = 60.0
     var trashHints: [TrashHint]?
     var loadDataFromPlist = LoadFromPlistProvider()
+    var trashDetailsFromPlist: [TrashDetails]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trashDetailsFromPlist = loadDataFromPlist.loadInfoFromPlist()
         
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
@@ -99,7 +102,6 @@ class ViewController: UIViewController {
         viewWithTableView?.isHidden = true
     }
     
-    
     func setupSearchBarTopViewConstraints(){
         searchBarTopView!.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
@@ -152,19 +154,18 @@ extension ViewController: TilesViewDelegate
 {
     func tileTapped(chosenTag: Int){
          let detailsVC = TrashTypeDetailsViewController()
-         detailsVC.chosenTag = chosenTag
-         detailsVC.chosenBackgroundColor = UIColor(hexString:(loadDataFromPlist.loadInfoFromPlist(index: chosenTag - 1)?.color!)!)
+         detailsVC.trashFromVC = trashDetailsFromPlist![chosenTag - 1]
          present(detailsVC, animated: true, completion: nil)
      }
 }
 
 extension ViewController: TilesViewDataSource{
     func getImage(index: Int) -> UIImage {
-        return UIImage(named:(loadDataFromPlist.loadInfoFromPlist(index: index)?.tileImageName!)!)!
+        return UIImage(named:(trashDetailsFromPlist![index].tileImageName!))!
     }
     
     func getBackgroundColor(index: Int) -> UIColor {
-        return  UIColor(hexString:(loadDataFromPlist.loadInfoFromPlist(index: index)?.color!)!)
+        return  UIColor(hexString:(trashDetailsFromPlist![index].color!))
     }
 }
 
@@ -225,10 +226,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trashHintCell", for: indexPath) as! TrashHintCell
         cell.trashNameLabel.text = trashHints![indexPath.row].label
+        print(trashHints![indexPath.row].url)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(cellHeight)
     }
+    
 }

@@ -71,7 +71,6 @@ class TilesView: UIView{
         button.imageView?.contentMode = .scaleAspectFit
         button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
         button.addTarget(self, action: #selector(actionWithParam(sender:)), for: .touchUpInside)
-
     }
     
     @objc func actionWithParam(sender: UIButton){
