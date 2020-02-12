@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4B923F4373700919C3B /* StringExtensions.swift */; };
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
 		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0AE4B923F4373700919C3B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
 		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F0AE4B823F4371600919C3B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F0AE4B923F4373700919C3B /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1F75A7AB23E87CED0030AC48 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 		1F75A7B623E87CED0030AC48 /* RecyclingWarsaw */ = {
 			isa = PBXGroup;
 			children = (
+				1F0AE4B823F4371600919C3B /* Extensions */,
 				1F0AE4B723F431D800919C3B /* Controller */,
 				1F0AE4B623F431D000919C3B /* Model */,
 				1F0AE4B523F431C200919C3B /* View */,
@@ -268,6 +279,7 @@
 				1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
+				1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */,
 				1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
