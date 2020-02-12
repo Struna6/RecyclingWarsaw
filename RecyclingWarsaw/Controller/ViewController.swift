@@ -305,6 +305,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
             let addTextMore = addText[addText.index(addText.startIndex,offsetBy: 27) ..< addText.index(addText.endIndex,offsetBy: -4)]
             print("Next Add Text: \(addTextMore)") // <p class="additional-info">Brudne opakowanie po jajkach wyrzuć do zmieszanych.</p>
             additionalInfo = String(addTextMore)
+        }else{
+            additionalInfo = ""
         }
         
         //Kosz
