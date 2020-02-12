@@ -65,7 +65,6 @@ class TilesView : UIView{
     }
     
     func setUpButton(button : UIButton,chosenTag:Int){
-        print(dataSource)
         button.tag = chosenTag
         button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1)
         button.setImage(dataSource?.getImage(index: chosenTag - 1), for: .normal)

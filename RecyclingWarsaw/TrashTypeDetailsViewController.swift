@@ -45,7 +45,7 @@ class TrashTypeDetailsViewController: UIViewController {
         //trashCategoryImage.backgroundColor = .gray //HelpfulColor
         
         categoryDetailsLabel.text = loadDataFromPlist.loadInfoFromPlist(index: chosenTag! - 1)?.description
-        print(categoryDetailsLabel.text)
+  
         
         categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 15)
         categoryDetailsLabel.adjustsFontSizeToFitWidth = true

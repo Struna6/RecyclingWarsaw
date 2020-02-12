@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello we work here")
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
         searchBarTopView!.searchBar?.delegate = self
@@ -172,6 +171,10 @@ extension ViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count >= 1{
             trashHintsLoaderImpl?.loadTrashHints(text: searchText, completion: { (elements) in
+                guard searchBar.text!.count >= 1 else {
+                    self.viewWithTableView?.isHidden = true
+                    return
+                }
                 if elements != nil {
                     for el in elements!{
                         print(el.label)
@@ -212,7 +215,6 @@ extension ViewController : UISearchBarDelegate{
 extension ViewController : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if trashHints != nil{
-            print(trashHints!.count)
             return trashHints!.count
         }else{
             return 0

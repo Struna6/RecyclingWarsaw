@@ -21,7 +21,6 @@ class ViewWithTableView : UIView{
     }
     
     func setConstraints(){
-        print(superview)
         tableView!.snp.makeConstraints{
           $0.top.equalToSuperview().offset(0)
           $0.left.equalToSuperview().offset(0)
