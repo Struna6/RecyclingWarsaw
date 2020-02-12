@@ -29,6 +29,12 @@ class ViewController: UIViewController {
     var loadDataFromPlist = LoadFromPlistProvider()
     var trashDetailsFromPlist: [TrashDetails]?
     
+    //variablesforgoingtoanothervc
+    var mainInfo = ""
+    var additionalInfo = ""
+    var trashDetail : TrashDetails?
+    var trashHintName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -241,9 +247,21 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
             let content = try String(contentsOf: url, encoding: .utf8)
             processTrashHTML(html:content)
             print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
+            trashHintName = trashHints![indexPath.row].label
+            goToTrashDetailsVC()
+            
         }catch{
             print("ERROR")
         }
+    }
+    
+    func goToTrashDetailsVC(){
+        let detailsVC = TrashHintDetailsViewController()
+        detailsVC.trashFromVC = trashDetail
+        detailsVC.mainInfo = mainInfo
+        detailsVC.additionalInfo = additionalInfo
+        detailsVC.trashHintName = trashHintName
+        present(detailsVC, animated: true, completion: nil)
     }
     
     func processTrashHTML(html:String){
@@ -256,7 +274,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         //print(neededHTML)
         
         //Get main info
-        var mainInfo = ""
         
         let startMain = neededHTML.range(of: "<h1>")?.lowerBound
         let stopMain = neededHTML.range(of: "</h1>")?.upperBound
@@ -279,7 +296,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         }
         
         //Get additional info - opitonal
-        var additionalInfo = ""
         
         let startAdd = neededHTML.range(of: "<p class=\"additional-info\">")?.lowerBound
         let stopAdd = neededHTML.range(of: "</p>")?.upperBound
@@ -292,7 +308,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         }
         
         //Kosz
-        var trashDetail : TrashDetails?
         
         let startBin = neededHTML.range(of: "<div class=\"bin")?.lowerBound
         let stopBin = neededHTML.range(of: "<div class=\"inner-search")?.upperBound
@@ -327,7 +342,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         }
         
         print("Informacje główne: \(mainInfo)")
-        print("Informacje dodatkowe: \(additionalInfo)")
+        print("Informacje dodatkowe: \(trashDetail)")
         print("Kosz: \(trashDetail?.name)")
     }
 }
