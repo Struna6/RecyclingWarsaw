@@ -86,5 +86,17 @@
 		<key>tileImageName</key>
 		<string>Zmieszane</string>
 	</dict>
+	<dict>
+		<key>name</key>
+		<string>Inne</string>
+		<key>description</key>
+		<string>inne</string>
+		<key>imageName</key>
+		<string>ZmieszaneNoWords</string>
+		<key>color</key>
+		<string>#242121</string>
+		<key>tileImageName</key>
+		<string>Zmieszane</string>
+	</dict>
 </array>
 </plist>

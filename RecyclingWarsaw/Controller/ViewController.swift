@@ -234,4 +234,100 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         return CGFloat(cellHeight)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var urlString = trashHints![indexPath.row].url
+        let url = URL(string: urlString)!//Safe
+        do{
+            let content = try String(contentsOf: url, encoding: .utf8)
+            processTrashHTML(html:content)
+            print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
+        }catch{
+            print("ERROR")
+        }
+    }
+    
+    func processTrashHTML(html:String){
+        //print(html)
+        print("------------------------")
+        let start = html.range(of: "waste-answer\">")?.lowerBound
+        let stop = html.range(of: "<div class=\"inner-search")?.upperBound
+        guard start != nil, stop != nil else {return}
+        let neededHTML = html[start!..<stop!]
+        //print(neededHTML)
+        
+        //Get main info
+        var mainInfo = ""
+        
+        let startMain = neededHTML.range(of: "<h1>")?.lowerBound
+        let stopMain = neededHTML.range(of: "</h1>")?.upperBound
+        guard startMain != nil, stopMain != nil else {return}
+        let mainText = neededHTML[startMain!..<stopMain!]
+        let nextText = mainText[mainText.index(mainText.startIndex,offsetBy: 4) ..< mainText.index(mainText.endIndex,offsetBy: -5)]
+        
+        if nextText.contains("</span>"){
+             let startNextText = nextText.range(of: "</span> -")?.lowerBound
+             let noSpanText = nextText[startNextText! ..< nextText.endIndex]
+             let noSpanTextMore = noSpanText[noSpanText.index(noSpanText.startIndex,offsetBy: 10) ..< noSpanText.endIndex]
+             //print("No Span Text:\(noSpanTextMore)")
+             mainInfo = String(noSpanTextMore)
+        }else{
+            let startDeep = nextText.range(of: "-")?.lowerBound
+            let nextTextBetter = nextText[startDeep!..<nextText.endIndex]
+            //print("Next Text (noSpanBefore): \(nextTextBetter)")
+            let noSpanTextMuchMore = nextTextBetter[nextTextBetter.index(nextTextBetter.startIndex,offsetBy: 1) ..< nextTextBetter.endIndex]
+            mainInfo = String(noSpanTextMuchMore)
+        }
+        
+        //Get additional info - opitonal
+        var additionalInfo = ""
+        
+        let startAdd = neededHTML.range(of: "<p class=\"additional-info\">")?.lowerBound
+        let stopAdd = neededHTML.range(of: "</p>")?.upperBound
+        if startAdd != nil, stopAdd != nil {
+            let addText = neededHTML[startAdd!..<stopAdd!]
+            //print("Add Text: \(addText)")
+            let addTextMore = addText[addText.index(addText.startIndex,offsetBy: 27) ..< addText.index(addText.endIndex,offsetBy: -4)]
+            print("Next Add Text: \(addTextMore)") // <p class="additional-info">Brudne opakowanie po jajkach wyrzuć do zmieszanych.</p>
+            additionalInfo = String(addTextMore)
+        }
+        
+        //Kosz
+        var trashDetail : TrashDetails?
+        
+        let startBin = neededHTML.range(of: "<div class=\"bin")?.lowerBound
+        let stopBin = neededHTML.range(of: "<div class=\"inner-search")?.upperBound
+        guard startBin != nil, stopBin != nil else {return}
+        let binText = neededHTML[startBin!..<stopBin!]
+        //print("Bin Text: \(binText)")
+        
+        if binText.lowercased().contains("bioodpady"){
+            print("KOSZ: bio")
+            trashDetail = trashDetailsFromPlist![1]
+        }else if binText.lowercased().contains("zmieszane"){
+            print("KOSZ: zmieszane")
+            trashDetail = trashDetailsFromPlist![6]
+        }else if binText.lowercased().contains("papier"){
+            print("KOSZ: papier")
+            trashDetail = trashDetailsFromPlist![4]
+        }else if binText.lowercased().contains("szkło"){
+            print("KOSZ: szkło")
+            trashDetail = trashDetailsFromPlist![2]
+        }else if binText.lowercased().contains("gabaryty"){
+            print("KOSZ: gabaryty")
+            trashDetail = trashDetailsFromPlist![5]
+        }else if binText.lowercased().contains("zielone"){
+            print("KOSZ: zielone")
+            trashDetail = trashDetailsFromPlist![3]
+        }else if binText.lowercased().contains("metale"){
+            print("KOSZ: metale")
+            trashDetail = trashDetailsFromPlist![0]
+        }else{
+            print("KOSZ: Coś innego") //inny
+            trashDetail = trashDetailsFromPlist![7]
+        }
+        
+        print("Informacje główne: \(mainInfo)")
+        print("Informacje dodatkowe: \(additionalInfo)")
+        print("Kosz: \(trashDetail?.name)")
+    }
 }
