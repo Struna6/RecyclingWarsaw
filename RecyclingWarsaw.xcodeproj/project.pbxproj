@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4B923F4373700919C3B /* StringExtensions.swift */; };
+		1F0AE4BC23F43C4200919C3B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */; };
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
 		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1F0AE4B923F4373700919C3B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
 		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				1F0AE4B923F4373700919C3B /* StringExtensions.swift */,
+				1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */,
+				1F0AE4BC23F43C4200919C3B /* UIColorExtensions.swift in Sources */,
 				1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */,
 				1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */,
 				1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */,

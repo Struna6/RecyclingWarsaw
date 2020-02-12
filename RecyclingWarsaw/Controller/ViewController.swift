@@ -26,9 +26,7 @@ class ViewController: UIViewController {
     var viewWithTableView : ViewWithTableView?
     var cellHeight = 60.0
     var trashHints : [TrashHint]?
-    
-    var tileColors = [UIColor(red:254/255, green:183/255, blue:43/255, alpha:1.00),UIColor(red:153/255, green:95/255, blue:53/255, alpha:1.00),UIColor(red:59/255, green:175/255, blue:40/255, alpha:1.00), UIColor(red:83/255, green:88/255, blue:90/255, alpha:1.00), UIColor(red:16/255, green:113/255, blue:206/255, alpha:1.00),UIColor(red:252/255, green:102/255, blue:32/255, alpha:1.00),UIColor(red:36/255, green:33/255, blue:33/255, alpha:1.00)]
-    var tileImages = [UIImage(named: "Metale"),UIImage(named: "Bio"),UIImage(named: "Szkło"),UIImage(named: "Zielone"),UIImage(named: "Papier"),UIImage(named: "Wielkogabarytowe"),UIImage(named: "Zmieszane")]
+    var loadDataFromPlist = LoadFromPlistProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,18 +153,18 @@ extension ViewController : TilesViewDelegate
     func tileTapped(chosenTag: Int){
          let detailsVC = TrashTypeDetailsViewController()
          detailsVC.chosenTag = chosenTag
-         detailsVC.chosenBackgroundColor = tileColors[chosenTag-1]
+         detailsVC.chosenBackgroundColor = UIColor(hexString:(loadDataFromPlist.loadInfoFromPlist(index: chosenTag - 1)?.color!)!)
          present(detailsVC, animated: true, completion: nil)
      }
 }
 
 extension ViewController : TilesViewDataSource{
     func getImage(index: Int) -> UIImage {
-        return tileImages[index]!
+        return UIImage(named:(loadDataFromPlist.loadInfoFromPlist(index: index)?.tileImageName!)!)!
     }
     
     func getBackgroundColor(index: Int) -> UIColor {
-        return tileColors[index]
+        return  UIColor(hexString:(loadDataFromPlist.loadInfoFromPlist(index: index)?.color!)!)
     }
 }
 

@@ -24,7 +24,7 @@ class TrashTypeDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = chosenBackgroundColor
-        print("Chosen tag is \(chosenTag)")
+        print("Chosen tag is \(String(describing: chosenTag))")
         
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)

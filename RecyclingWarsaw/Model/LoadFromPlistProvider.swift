@@ -15,7 +15,7 @@ class LoadFromPlistProvider {
         if let data = try? Data(contentsOf: dataFilePath) {
             let decoder = PropertyListDecoder()
             do{
-                var trashDetails = try decoder.decode([TrashDetails].self, from: data)
+                let trashDetails = try decoder.decode([TrashDetails].self, from: data)
                 return trashDetails[index]
             } catch{
                 print("Error decoding item array: \(error)")
@@ -29,4 +29,6 @@ class TrashDetails : Decodable{
     var name : String?
     var description : String?
     var imageName : String?
+    var color : String?
+    var tileImageName : String?
 }
