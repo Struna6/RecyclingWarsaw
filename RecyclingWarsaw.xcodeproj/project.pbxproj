@@ -60,6 +60,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0AE4B523F431C200919C3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F34E20723E8ABA30042C017 /* TilesView.swift */,
+				1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */,
+				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
+				1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */,
+				1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F0AE4B623F431D000919C3B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
+				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
+				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F0AE4B723F431D800919C3B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F75A7BB23E87CED0030AC48 /* ViewController.swift */,
+				1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1F75A7AB23E87CED0030AC48 = {
 			isa = PBXGroup;
 			children = (
@@ -81,19 +112,12 @@
 		1F75A7B623E87CED0030AC48 /* RecyclingWarsaw */ = {
 			isa = PBXGroup;
 			children = (
+				1F0AE4B723F431D800919C3B /* Controller */,
+				1F0AE4B623F431D000919C3B /* Model */,
+				1F0AE4B523F431C200919C3B /* View */,
 				1F75A7B723E87CED0030AC48 /* AppDelegate.swift */,
 				1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */,
 				1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */,
-				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
-				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
-				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
-				1F75A7BB23E87CED0030AC48 /* ViewController.swift */,
-				1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */,
-				1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */,
-				1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */,
-				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
-				1F34E20723E8ABA30042C017 /* TilesView.swift */,
-				1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
 				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
 				1F75A7C523E87CEE0030AC48 /* Info.plist */,

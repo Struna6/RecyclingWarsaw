@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
         searchBarTopView!.searchBar?.delegate = self
@@ -40,49 +41,25 @@ class ViewController: UIViewController {
         //ViewController
         view.backgroundColor = .white //HelpfulColor
         
-        //MainMenuView
+        //TilesView
         tilesView = TilesView(frame: .zero)
         
         tilesView!.delegate = self
         tilesView!.dataSource = self
-        
         view.addSubview(tilesView!)
         
-
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
         
         //BlurEffectView
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView!.frame = view.bounds
-        view.addSubview(blurEffectView!)
-        blurEffectView?.isHidden = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnBlur))
-        tap.numberOfTapsRequired = 1
-        blurEffectView!.addGestureRecognizer(tap)
+        setUpBlurEffectView()
         
         //ViewWithTableView
-        viewWithTableView = ViewWithTableView()
-        viewWithTableView?.tableView?.delegate = self
-        viewWithTableView?.tableView?.dataSource = self
-        viewWithTableView?.tableView?.register(TrashHintCell.self, forCellReuseIdentifier: "trashHintCell")
-        viewWithTableView?.backgroundColor = .yellow
-        view.addSubview(viewWithTableView!)
-        viewWithTableView?.setConstraints()
-        viewWithTableView?.isHidden = true
+        setupViewWithTableView()
         
         //TrashHintsLoaderImpl
         trashHintsLoaderImpl = TrashHintsLoaderImpl()
-    }
-    
-    @objc func tapOnBlur() {
-        blurEffectView?.isHidden = true
-        searchBarTopView?.searchBar!.resignFirstResponder()
-        searchBarTopView?.searchBar!.text = ""
-        viewWithTableView?.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +71,36 @@ class ViewController: UIViewController {
         
         tilesView?.setUpButtons()
     }
+    
+    func setUpBlurEffectView(){
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView!.frame = view.bounds
+        view.addSubview(blurEffectView!)
+        blurEffectView?.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnBlur))
+        tap.numberOfTapsRequired = 1
+        blurEffectView!.addGestureRecognizer(tap)
+    }
+    
+    func setupViewWithTableView(){
+        viewWithTableView = ViewWithTableView()
+        viewWithTableView?.tableView?.delegate = self
+        viewWithTableView?.tableView?.dataSource = self
+        viewWithTableView?.tableView?.register(TrashHintCell.self, forCellReuseIdentifier: "trashHintCell")
+        viewWithTableView?.backgroundColor = .yellow
+        view.addSubview(viewWithTableView!)
+        viewWithTableView?.setConstraints()
+        viewWithTableView?.isHidden = true
+    }
+    
+    @objc func tapOnBlur() {
+        blurEffectView?.isHidden = true
+        searchBarTopView?.searchBar!.resignFirstResponder()
+        searchBarTopView?.searchBar!.text = ""
+        viewWithTableView?.isHidden = true
+    }
+    
     
     func setupSearchBarTopViewConstraints(){
         searchBarTopView!.snp.makeConstraints { (make) -> Void in
