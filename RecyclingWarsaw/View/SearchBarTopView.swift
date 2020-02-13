@@ -17,13 +17,14 @@ class SearchBarTopView: UIView{
       super.init(frame: frame)
       setupView()
       searchBar = UISearchBar()
-      searchBar?.backgroundColor = .white
+      searchBar?.backgroundColor = .systemBackground
+      searchBar?.searchBarStyle = .minimal
       addSubview(searchBar!)
       setUpSearchBarConstraints()
     }
     
     private func setupView() {
-      backgroundColor = .white
+      backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

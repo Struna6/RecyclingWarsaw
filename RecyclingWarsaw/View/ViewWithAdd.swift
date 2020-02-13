@@ -17,7 +17,7 @@ class ViewWithAdd: UIView{
     }
     
     private func setupView() {
-      backgroundColor = .white
+      backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         view.addSubview(searchBarTopView!)
         
         //ViewController
-        view.backgroundColor = .white //HelpfulColor
+        view.backgroundColor = .systemBackground //HelpfulColor
         
         //TilesView
         tilesView = TilesView(frame: .zero)
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
-            make.height.equalTo(50)
+            make.height.equalTo(55)
         }
     }
     
