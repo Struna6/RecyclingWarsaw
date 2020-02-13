@@ -7,7 +7,13 @@
 //
 
 import Foundation
-class LoadFromPlistProvider {
+
+
+protocol LoadFromPlistProvider: class{
+    func loadInfoFromPlist() -> [TrashDetails]?
+}
+
+class LoadFromPlistProviderImpl: LoadFromPlistProvider{
     
     func loadInfoFromPlist() -> [TrashDetails]?
     {

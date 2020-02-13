@@ -26,14 +26,17 @@ class ViewController: UIViewController {
     var viewWithTableView: ViewWithTableView?
     var cellHeight = 60.0
     var trashHints: [TrashHint]?
-    var loadDataFromPlist = LoadFromPlistProvider()
+    var loadDataFromPlist : LoadFromPlistProvider?
     var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
     var trashDetailsFromPlist: [TrashDetails]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trashDetailsFromPlist = loadDataFromPlist.loadInfoFromPlist()
+        //LoadFromPlistProviderImpl
+        loadDataFromPlist = LoadFromPlistProviderImpl()
+        
+        trashDetailsFromPlist = loadDataFromPlist!.loadInfoFromPlist()
         
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
