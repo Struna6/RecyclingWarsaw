@@ -13,6 +13,8 @@
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
 		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
 		1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */; };
+		1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */; };
+		1F3D1CA923F5E9F900D8BB01 /* TrashHintDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
 		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
 		1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsProvider.swift; sourceTree = "<group>"; };
+		1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetails.swift; sourceTree = "<group>"; };
+		1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetails.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
-				1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */,
-				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
-				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
+				1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */,
+				1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +111,16 @@
 				1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F3D1CAA23F5EA1900D8BB01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */,
+				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
+				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1F75A7AB23E87CED0030AC48 = {
@@ -134,6 +147,7 @@
 				1F0AE4B823F4371600919C3B /* Extensions */,
 				1F0AE4B723F431D800919C3B /* Controller */,
 				1F0AE4B623F431D000919C3B /* Model */,
+				1F3D1CAA23F5EA1900D8BB01 /* ViewModel */,
 				1F0AE4B523F431C200919C3B /* View */,
 				1F75A7B723E87CED0030AC48 /* AppDelegate.swift */,
 				1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */,
@@ -283,11 +297,13 @@
 				1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */,
 				1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */,
 				1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */,
+				1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */,
 				1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
 				1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */,
 				1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,
+				1F3D1CA923F5E9F900D8BB01 /* TrashHintDetails.swift in Sources */,
 				1F0AE4BE23F4863400919C3B /* TrashHintDetailsViewController.swift in Sources */,
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
 				1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */,

@@ -121,12 +121,3 @@ class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
        }
     }
 }
-
-class TrashHintDetails{
-    var mainInfo : String?
-    var trashDetail : TrashDetails?
-    var additionalInfo : String?
-    var trashHintName : String?
-    init(){
-    }
-}
