@@ -338,9 +338,18 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         }else if binText.lowercased().contains("metale"){
             print("KOSZ: metale")
             trashDetail = trashDetailsFromPlist![0]
-        }else{
-            print("KOSZ: Coś innego") //inny
+        }else if binText.lowercased().contains("baterie"){
+            print("KOSZ: baterie")
             trashDetail = trashDetailsFromPlist![7]
+        }else if binText.lowercased().contains("elektrośmieci"){
+            print("KOSZ: elektrośmieci")
+            trashDetail = trashDetailsFromPlist![8]
+        }else if binText.lowercased().contains("leki"){
+            print("KOSZ: leki")
+            trashDetail = trashDetailsFromPlist![9]
+        }else{
+            print("KOSZ: pozostałe")
+            trashDetail = trashDetailsFromPlist![10]
         }
         
         print("Informacje główne: \(mainInfo)")

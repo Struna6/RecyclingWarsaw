@@ -88,15 +88,51 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Inne</string>
+		<string>Baterie i akumulatory</string>
 		<key>description</key>
-		<string>inne</string>
+		<string>-</string>
 		<key>imageName</key>
-		<string>ZmieszaneNoWords</string>
+		<string>BaterieNoWords</string>
 		<key>color</key>
-		<string>#242121</string>
+		<string>#8e1412</string>
 		<key>tileImageName</key>
-		<string>Zmieszane</string>
+		<string>Baterie</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Elektrośmieci</string>
+		<key>description</key>
+		<string>-</string>
+		<key>imageName</key>
+		<string>ElektrośmieciNoWords</string>
+		<key>color</key>
+		<string>#8e1412</string>
+		<key>tileImageName</key>
+		<string>Elektrośmieci</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Leki</string>
+		<key>description</key>
+		<string>-</string>
+		<key>imageName</key>
+		<string>LekiNoWords</string>
+		<key>color</key>
+		<string>#9a5f30</string>
+		<key>tileImageName</key>
+		<string>Leki</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Pozostałe odpady</string>
+		<key>description</key>
+		<string>-</string>
+		<key>imageName</key>
+		<string>PozostałeNoWords</string>
+		<key>color</key>
+		<string>#19b370</string>
+		<key>tileImageName</key>
+		<string>Pozostałe</string>
 	</dict>
 </array>
 </plist>
