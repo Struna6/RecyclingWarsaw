@@ -28,6 +28,7 @@ class TrashHintDetailsViewController: TrashTypeDetailsViewController{
     override func setUpTrashCategoryNameLabel(){
         super.setUpTrashCategoryNameLabel()
         trashCategoryNameLabel.text = trashHintName
+        trashCategoryNameLabel.backgroundColor = view.backgroundColor?.lighter()
     }
     
 }

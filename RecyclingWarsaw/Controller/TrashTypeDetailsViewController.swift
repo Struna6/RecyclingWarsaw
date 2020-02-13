@@ -48,6 +48,9 @@ class TrashTypeDetailsViewController: UIViewController {
         trashCategoryNameLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 30)
         view.addSubview(trashCategoryNameLabel)
         trashCategoryNameLabel.textColor = .white
+        trashCategoryNameLabel.adjustsFontSizeToFitWidth = true
+        trashCategoryNameLabel.numberOfLines = 2
+        //trashCategoryNameLabel.
     }
     
     func setUpTrashCategoryImage(){
@@ -88,7 +91,7 @@ class TrashTypeDetailsViewController: UIViewController {
             make.height.equalTo(50)
         }
         trashCategoryImage!.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(trashCategoryNameLabel).offset(50)
+            make.top.equalTo(trashCategoryNameLabel).offset(70)
             make.left.equalTo(view).offset(0)
             make.right.equalTo(view).offset(0)
             make.height.equalTo(200)
@@ -97,7 +100,7 @@ class TrashTypeDetailsViewController: UIViewController {
             make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
             make.left.equalTo(view).offset(20)
             make.right.equalTo(view).offset(-20)
-            make.height.equalTo(150)
+            make.height.equalTo(200)
         }
     }
 }
