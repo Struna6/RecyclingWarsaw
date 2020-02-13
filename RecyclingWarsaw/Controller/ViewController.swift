@@ -27,13 +27,8 @@ class ViewController: UIViewController {
     var cellHeight = 60.0
     var trashHints: [TrashHint]?
     var loadDataFromPlist = LoadFromPlistProvider()
+    var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
     var trashDetailsFromPlist: [TrashDetails]?
-    
-    //variablesforgoingtoanothervc
-    var mainInfo = ""
-    var additionalInfo = ""
-    var trashDetail : TrashDetails?
-    var trashHintName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +62,9 @@ class ViewController: UIViewController {
         
         //TrashHintsLoaderImpl
         trashHintsLoaderImpl = TrashHintsLoaderImpl()
+        
+        //TrashHintDetailsProviderImpl
+        trashHintDetailsProviderImpl = TrashHintDetailsProviderImpl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -214,7 +212,7 @@ extension ViewController: UISearchBarDelegate{
                         self?.viewWithTableView?.tableView?.isScrollEnabled = false
                     }
                 }else{
-                    print("dupa nil")
+                    print("dupa nil")//PRZYPADEK - NieZwróconoZHTMLAszczegółów
                 }
             })
         }else{
@@ -241,119 +239,27 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var urlString = trashHints![indexPath.row].url
+        let urlString = trashHints![indexPath.row].url
         let url = URL(string: urlString)!//Safe
         do{
             let content = try String(contentsOf: url, encoding: .utf8)
-            processTrashHTML(html:content)
-            print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
-            trashHintName = trashHints![indexPath.row].label
-            goToTrashDetailsVC()
+            let trashHintDetails = trashHintDetailsProviderImpl?.processTrashHTML(html: content, trashDetailsFromPlist: trashDetailsFromPlist!)
+            guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
             
+            trashHintDetails!.trashHintName = trashHints![indexPath.row].label
+            print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
+            goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
         }catch{
             print("ERROR")
         }
     }
     
-    func goToTrashDetailsVC(){
+    func goToTrashDetailsVC(trashHintDetails:TrashHintDetails){
         let detailsVC = TrashHintDetailsViewController()
-        detailsVC.trashFromVC = trashDetail
-        detailsVC.mainInfo = mainInfo
-        detailsVC.additionalInfo = additionalInfo
-        detailsVC.trashHintName = trashHintName
+        detailsVC.trashFromVC = trashHintDetails.trashDetail
+        detailsVC.mainInfo = trashHintDetails.mainInfo!
+        detailsVC.additionalInfo = trashHintDetails.additionalInfo!
+        detailsVC.trashHintName = trashHintDetails.trashHintName!
         present(detailsVC, animated: true, completion: nil)
-    }
-    
-    func processTrashHTML(html:String){
-        //print(html)
-        print("------------------------")
-        let start = html.range(of: "waste-answer\">")?.lowerBound
-        let stop = html.range(of: "<div class=\"inner-search")?.upperBound
-        guard start != nil, stop != nil else {return}
-        let neededHTML = html[start!..<stop!]
-        //print(neededHTML)
-        
-        //Get main info
-        
-        let startMain = neededHTML.range(of: "<h1>")?.lowerBound
-        let stopMain = neededHTML.range(of: "</h1>")?.upperBound
-        guard startMain != nil, stopMain != nil else {return}
-        let mainText = neededHTML[startMain!..<stopMain!]
-        let nextText = mainText[mainText.index(mainText.startIndex,offsetBy: 4) ..< mainText.index(mainText.endIndex,offsetBy: -5)]
-        
-        if nextText.contains("</span>"){
-             let startNextText = nextText.range(of: "</span> -")?.lowerBound
-             let noSpanText = nextText[startNextText! ..< nextText.endIndex]
-             let noSpanTextMore = noSpanText[noSpanText.index(noSpanText.startIndex,offsetBy: 10) ..< noSpanText.endIndex]
-             //print("No Span Text:\(noSpanTextMore)")
-             mainInfo = String(noSpanTextMore)
-        }else{
-            let startDeep = nextText.range(of: "-")?.lowerBound
-            let nextTextBetter = nextText[startDeep!..<nextText.endIndex]
-            //print("Next Text (noSpanBefore): \(nextTextBetter)")
-            let noSpanTextMuchMore = nextTextBetter[nextTextBetter.index(nextTextBetter.startIndex,offsetBy: 1) ..< nextTextBetter.endIndex]
-            mainInfo = String(noSpanTextMuchMore)
-        }
-        
-        //Get additional info - opitonal
-        
-        let startAdd = neededHTML.range(of: "<p class=\"additional-info\">")?.lowerBound
-        let stopAdd = neededHTML.range(of: "</p>")?.upperBound
-        if startAdd != nil, stopAdd != nil {
-            let addText = neededHTML[startAdd!..<stopAdd!]
-            //print("Add Text: \(addText)")
-            let addTextMore = addText[addText.index(addText.startIndex,offsetBy: 27) ..< addText.index(addText.endIndex,offsetBy: -4)]
-            print("Next Add Text: \(addTextMore)") // <p class="additional-info">Brudne opakowanie po jajkach wyrzuć do zmieszanych.</p>
-            additionalInfo = String(addTextMore)
-        }else{
-            additionalInfo = ""
-        }
-        
-        //Kosz
-        
-        let startBin = neededHTML.range(of: "<div class=\"bin")?.lowerBound
-        let stopBin = neededHTML.range(of: "<div class=\"inner-search")?.upperBound
-        guard startBin != nil, stopBin != nil else {return}
-        let binText = neededHTML[startBin!..<stopBin!]
-        //print("Bin Text: \(binText)")
-        
-        if binText.lowercased().contains("bioodpady"){
-            print("KOSZ: bio")
-            trashDetail = trashDetailsFromPlist![1]
-        }else if binText.lowercased().contains("zmieszane"){
-            print("KOSZ: zmieszane")
-            trashDetail = trashDetailsFromPlist![6]
-        }else if binText.lowercased().contains("papier"){
-            print("KOSZ: papier")
-            trashDetail = trashDetailsFromPlist![4]
-        }else if binText.lowercased().contains("szkło"){
-            print("KOSZ: szkło")
-            trashDetail = trashDetailsFromPlist![2]
-        }else if binText.lowercased().contains("gabaryty"){
-            print("KOSZ: gabaryty")
-            trashDetail = trashDetailsFromPlist![5]
-        }else if binText.lowercased().contains("zielone"){
-            print("KOSZ: zielone")
-            trashDetail = trashDetailsFromPlist![3]
-        }else if binText.lowercased().contains("metale"){
-            print("KOSZ: metale")
-            trashDetail = trashDetailsFromPlist![0]
-        }else if binText.lowercased().contains("baterie"){
-            print("KOSZ: baterie")
-            trashDetail = trashDetailsFromPlist![7]
-        }else if binText.lowercased().contains("elektrośmieci"){
-            print("KOSZ: elektrośmieci")
-            trashDetail = trashDetailsFromPlist![8]
-        }else if binText.lowercased().contains("leki"){
-            print("KOSZ: leki")
-            trashDetail = trashDetailsFromPlist![9]
-        }else{
-            print("KOSZ: pozostałe")
-            trashDetail = trashDetailsFromPlist![10]
-        }
-        
-        print("Informacje główne: \(mainInfo)")
-        print("Informacje dodatkowe: \(trashDetail)")
-        print("Kosz: \(trashDetail?.name)")
     }
 }

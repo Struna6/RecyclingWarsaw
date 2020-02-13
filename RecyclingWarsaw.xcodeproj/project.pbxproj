@@ -12,6 +12,7 @@
 		1F0AE4BE23F4863400919C3B /* TrashHintDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4BD23F4863400919C3B /* TrashHintDetailsViewController.swift */; };
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
 		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
+		1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		1F0AE4BD23F4863400919C3B /* TrashHintDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsViewController.swift; sourceTree = "<group>"; };
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
 		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
+		1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsProvider.swift; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1F75A7CB23E8838E0030AC48 /* TrashHint.swift */,
+				1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */,
 				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
 				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
 			);
@@ -289,6 +292,7 @@
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
 				1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */,
 				1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */,
+				1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
