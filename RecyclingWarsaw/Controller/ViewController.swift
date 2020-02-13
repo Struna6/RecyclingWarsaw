@@ -240,18 +240,11 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlString = trashHints![indexPath.row].url
-        let url = URL(string: urlString)!//Safe
-        do{
-            let content = try String(contentsOf: url, encoding: .utf8)
-            let trashHintDetails = trashHintDetailsProviderImpl?.processTrashHTML(html: content, trashDetailsFromPlist: trashDetailsFromPlist!)
-            guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
-            
-            trashHintDetails!.trashHintName = trashHints![indexPath.row].label
-            print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
-            goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
-        }catch{
-            print("ERROR")
-        }
+        let trashHintDetails = trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString,trashDetailsFromPlist: trashDetailsFromPlist!)
+        guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
+        trashHintDetails!.trashHintName = trashHints![indexPath.row].label
+        print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
+        goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
     }
     
     func goToTrashDetailsVC(trashHintDetails:TrashHintDetails){

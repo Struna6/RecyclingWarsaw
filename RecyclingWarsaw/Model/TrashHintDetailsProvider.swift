@@ -9,11 +9,11 @@
 import Foundation
 
 protocol TrashHintDetailsProvider: class{
-    func processTrashHTML(html:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?
+    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?
 }
 
 class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
-    func processTrashHTML(html:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?{
+    func processHTML(html:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?{
         let trashHintDetail = TrashHintDetails()
         //print(html)
         print("------------------------")
@@ -53,7 +53,7 @@ class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
             let addText = neededHTML[startAdd!..<stopAdd!]
             //print("Add Text: \(addText)")
             let addTextMore = addText[addText.index(addText.startIndex,offsetBy: 27) ..< addText.index(addText.endIndex,offsetBy: -4)]
-            print("Next Add Text: \(addTextMore)") 
+            print("Next Add Text: \(addTextMore)")
             trashHintDetail.additionalInfo = String(addTextMore)
         }else{
             trashHintDetail.additionalInfo = ""
@@ -107,6 +107,18 @@ class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
         print("Kosz: \(String(describing: trashHintDetail.trashDetail?.name))")
         
         return trashHintDetail
+    }
+    
+    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?{
+       let url = URL(string: urlString)!
+       do{
+           let content = try String(contentsOf: url, encoding: .utf8)
+           let trashHintDetails = processHTML(html: content, trashDetailsFromPlist: trashDetailsFromPlist)
+           return trashHintDetails
+       }catch{
+           print("ERROR")
+           return nil
+       }
     }
 }
 
