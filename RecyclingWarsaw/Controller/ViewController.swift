@@ -233,7 +233,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trashHintCell", for: indexPath) as! TrashHintCell
         cell.trashNameLabel.text = trashHints![indexPath.row].label
-        print(trashHints![indexPath.row].url)
         return cell
     }
     
@@ -243,11 +242,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlString = trashHints![indexPath.row].url
-        let trashHintDetails = trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString,trashDetailsFromPlist: trashDetailsFromPlist!)
-        guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
-        trashHintDetails!.trashHintName = trashHints![indexPath.row].label
-        print("Nazwa śmiecia: \(trashHints![indexPath.row].label)")
-        goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
+        trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
+            guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
+            trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
+            print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
+            self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
+        })
     }
     
     func goToTrashDetailsVC(trashHintDetails:TrashHintDetails){
@@ -256,6 +256,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         detailsVC.mainInfo = trashHintDetails.mainInfo!
         detailsVC.additionalInfo = trashHintDetails.additionalInfo!
         detailsVC.trashHintName = trashHintDetails.trashHintName!
-        present(detailsVC, animated: true, completion: nil)
+        self.present(detailsVC, animated: true, completion: nil)
     }
 }

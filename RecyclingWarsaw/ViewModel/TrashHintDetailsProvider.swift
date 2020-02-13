@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TrashHintDetailsProvider: class{
-    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?
+    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails],completion : @escaping (TrashHintDetails?,Error?) -> Void)
 }
 
 class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
@@ -109,15 +109,21 @@ class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
         return trashHintDetail
     }
     
-    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails]) -> TrashHintDetails?{
-       let url = URL(string: urlString)!
-       do{
-           let content = try String(contentsOf: url, encoding: .utf8)
-           let trashHintDetails = processHTML(html: content, trashDetailsFromPlist: trashDetailsFromPlist)
-           return trashHintDetails
-       }catch{
-           print("ERROR")
-           return nil
-       }
+    func getTrashHintDetails(urlString:String,trashDetailsFromPlist:[TrashDetails],completion: @escaping (TrashHintDetails?,Error?) -> Void){
+        let url = URL(string: urlString)!
+        let session = URLSession.init(configuration: .ephemeral)
+        let task = session.dataTask(with: url) { (data, response, error) in
+        var trashHintDetails : TrashHintDetails?
+        defer{
+            DispatchQueue.main.async{
+                completion(trashHintDetails,nil)
+            }
+        }
+        guard let data = data else {return}
+        guard let content = String(data: data, encoding: .utf8) else {return}
+        trashHintDetails = self.processHTML(html: content, trashDetailsFromPlist: trashDetailsFromPlist)
+        return
+        }
+        task.resume()
     }
 }
