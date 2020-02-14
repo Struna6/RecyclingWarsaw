@@ -96,7 +96,7 @@ class ViewController: UIViewController,GADBannerViewDelegate {
             make.bottom.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(0)
-            make.bottom.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(0)
         }
     }
     

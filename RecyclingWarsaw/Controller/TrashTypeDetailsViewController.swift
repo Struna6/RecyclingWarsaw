@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class TrashTypeDetailsViewController: UIViewController {
-
+class TrashTypeDetailsViewController: UIViewController, GADBannerViewDelegate {
+    var bannerView: GADBannerView!
     var viewWithAdd: ViewWithAdd?
     var trashCategoryNameLabel: UILabel!
     var trashCategoryImage: UIImageView!
@@ -19,11 +20,18 @@ class TrashTypeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
         view.backgroundColor = UIColor(hexString:(trashFromVC!.color!))
         
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
         
         //TrashCategoryNameLabel
         setUpTrashCategoryNameLabel()
@@ -38,6 +46,17 @@ class TrashTypeDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupViewWithAddConstraints()
         setUpLabelsAndImagesConstraints()
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+        viewWithAdd!.addSubview(bannerView)
+        bannerView.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(0)
+        }
     }
     
     func setUpTrashCategoryNameLabel(){
