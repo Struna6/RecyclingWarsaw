@@ -18,7 +18,8 @@ protocol TilesViewDataSource: class{
     func getBackgroundColor(index:Int) -> UIColor
 }
 
-class ViewController: UIViewController,GADBannerViewDelegate {
+class ViewController: UIViewController{
+    
     var bannerView: GADBannerView!
     var trashHintsLoaderImpl: TrashHintsLoader?
     var searchBarTopView: SearchBarTopView?
@@ -30,7 +31,9 @@ class ViewController: UIViewController,GADBannerViewDelegate {
     var trashHints: [TrashHint]?
     var loadDataFromPlist : LoadFromPlistProvider?
     var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
+    var adsProviderImpl: AdsProvider?
     var trashDetailsFromPlist: [TrashDetails]?
+    let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +63,8 @@ class ViewController: UIViewController,GADBannerViewDelegate {
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
         
-        addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
+        viewWithAdd!.addSubview(bannerView)
+        AdsProvider.initiateBannerAds(baner:bannerView,VC: self,id:bannerViewMainAdID)
         
         //BlurEffectView
         setUpBlurEffectView()
@@ -85,13 +85,13 @@ class ViewController: UIViewController,GADBannerViewDelegate {
         setupMainMenuViewConstraints()
         setupblurEffectViewConstraints()
         setupViewWithTableViewConstraints()
+        setupAddBannerViewConstraints()
         
         tilesView?.setUpButtons()
     }
     
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-       bannerView.translatesAutoresizingMaskIntoConstraints = false
-        viewWithAdd!.addSubview(bannerView)
+   func setupAddBannerViewConstraints(){
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.snp.makeConstraints { (make) -> Void in
             make.bottom.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)

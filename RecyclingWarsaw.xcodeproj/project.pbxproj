@@ -23,6 +23,7 @@
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
 		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
+		1FA749ED23F6E5C700F0B7C3 /* AdsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA749EC23F6E5C700F0B7C3 /* AdsProvider.swift */; };
 		1FE6CAF023F6D241001111E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */; };
 		1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */; };
 		1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */; };
@@ -51,6 +52,7 @@
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
 		1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTopView.swift; sourceTree = "<group>"; };
+		1FA749EC23F6E5C700F0B7C3 /* AdsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsProvider.swift; sourceTree = "<group>"; };
 		1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTableView.swift; sourceTree = "<group>"; };
 		1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */,
+				1FA749EC23F6E5C700F0B7C3 /* AdsProvider.swift */,
 				1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */,
 				1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */,
 			);
@@ -304,6 +307,7 @@
 				1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */,
 				1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
+				1FA749ED23F6E5C700F0B7C3 /* AdsProvider.swift in Sources */,
 				1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */,
 				1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,

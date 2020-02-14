@@ -9,30 +9,28 @@
 import UIKit
 import GoogleMobileAds
 
-class TrashTypeDetailsViewController: UIViewController, GADBannerViewDelegate {
+class TrashTypeDetailsViewController: UIViewController {
     var bannerView: GADBannerView!
     var viewWithAdd: ViewWithAdd?
     var trashCategoryNameLabel: UILabel!
     var trashCategoryImage: UIImageView!
     var categoryDetailsLabel: UILabel!
     var trashFromVC : TrashDetails?
+    let bannerViewDetailsAdID = "ca-app-pub-3940256099942544/6300978111"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+  
         
         view.backgroundColor = UIColor(hexString:(trashFromVC!.color!))
         
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
-        addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        
+        viewWithAdd!.addSubview(bannerView)
+        AdsProvider.initiateBannerAds(baner:bannerView,VC: self,id:bannerViewDetailsAdID)
         //TrashCategoryNameLabel
         setUpTrashCategoryNameLabel()
         
@@ -46,11 +44,11 @@ class TrashTypeDetailsViewController: UIViewController, GADBannerViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         setupViewWithAddConstraints()
         setUpLabelsAndImagesConstraints()
+        setupAddBannerViewConstraints()
     }
     
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-       bannerView.translatesAutoresizingMaskIntoConstraints = false
-        viewWithAdd!.addSubview(bannerView)
+    func setupAddBannerViewConstraints(){
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.snp.makeConstraints { (make) -> Void in
             make.bottom.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)
