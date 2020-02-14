@@ -9,6 +9,10 @@
 import UIKit
 import GoogleMobileAds
 
+protocol TrashTypeDetailsViewControllerDelegate : class{
+    func reloadAdd()
+}
+
 class TrashTypeDetailsViewController: UIViewController {
     var bannerView: GADBannerView!
     var viewWithAdd: ViewWithAdd?
@@ -17,12 +21,14 @@ class TrashTypeDetailsViewController: UIViewController {
     var categoryDetailsLabel: UILabel!
     var trashFromVC : TrashDetails?
     let bannerViewDetailsAdID = "ca-app-pub-3940256099942544/6300978111"
+    var trashTypeDetailsViewControllerDelegate :TrashTypeDetailsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-  
+        
+
         
         view.backgroundColor = UIColor(hexString:(trashFromVC!.color!))
         
@@ -45,6 +51,10 @@ class TrashTypeDetailsViewController: UIViewController {
         setupViewWithAddConstraints()
         setUpLabelsAndImagesConstraints()
         setupAddBannerViewConstraints()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        trashTypeDetailsViewControllerDelegate?.reloadAdd()
     }
     
     func setupAddBannerViewConstraints(){

@@ -80,6 +80,7 @@ class ViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupSearchBarTopViewConstraints()
         setupViewWithAddConstraints()
         setupMainMenuViewConstraints()
@@ -182,6 +183,7 @@ extension ViewController: TilesViewDelegate
     func tileTapped(chosenTag: Int){
          let detailsVC = TrashTypeDetailsViewController()
          detailsVC.trashFromVC = trashDetailsFromPlist![chosenTag - 1]
+         detailsVC.trashTypeDetailsViewControllerDelegate = self
          present(detailsVC, animated: true, completion: nil)
      }
 }
@@ -276,6 +278,13 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         detailsVC.mainInfo = trashHintDetails.mainInfo!
         detailsVC.additionalInfo = trashHintDetails.additionalInfo!
         detailsVC.trashHintName = trashHintDetails.trashHintName!
+        detailsVC.trashTypeDetailsViewControllerDelegate = self
         self.present(detailsVC, animated: true, completion: nil)
+    }
+}
+extension ViewController : TrashTypeDetailsViewControllerDelegate{
+    func reloadAdd() {
+        print("RELOAD")
+        AdsProvider.reloadAdd(baner: bannerView)
     }
 }

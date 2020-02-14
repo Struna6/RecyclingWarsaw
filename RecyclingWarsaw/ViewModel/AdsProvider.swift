@@ -11,15 +11,15 @@ import Firebase
 
 
 class AdsProvider{
-   static func initiateBannerAds(baner:GADBannerView,VC: UIViewController,id: String){
-      baner.adUnitID = id
-      baner.rootViewController = VC
-      baner.adSize = kGADAdSizeSmartBannerPortrait
-      baner.load(GADRequest())
+    static func initiateBannerAds(baner:GADBannerView,VC: UIViewController,id: String){
+        baner.adUnitID = id
+        baner.rootViewController = VC
+        baner.adSize = kGADAdSizeSmartBannerPortrait
+        baner.load(GADRequest())
+    }
+    static func reloadAdd(baner:GADBannerView){
+        baner.load(GADRequest())
+        print("RELOAD")
     }
 }
 
-//extension AdsProvider: GADBannerViewDelegate{
-//
-//}
-/*baner.delegate = self*/

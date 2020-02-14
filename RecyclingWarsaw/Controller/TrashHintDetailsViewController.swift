@@ -17,18 +17,20 @@ class TrashHintDetailsViewController: TrashTypeDetailsViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func setUpCategoryDetailsLabel(){
         super.setUpCategoryDetailsLabel()
         categoryDetailsLabel.text = "\(trashHintName) - \(mainInfo) \(additionalInfo)"
     }
+    
     override func setUpTrashCategoryImage(){
         super.setUpTrashCategoryImage()
         trashCategoryImage.image = UIImage(named: trashFromVC!.tileImageName!)
     }
+    
     override func setUpTrashCategoryNameLabel(){
         super.setUpTrashCategoryNameLabel()
         trashCategoryNameLabel.text = trashHintName
         trashCategoryNameLabel.backgroundColor = view.backgroundColor?.lighter()
     }
-    
 }
