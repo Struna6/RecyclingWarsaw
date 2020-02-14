@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import GoogleMobileAds
 
 protocol TilesViewDelegate: class{
     func tileTapped(chosenTag: Int)
@@ -17,7 +18,8 @@ protocol TilesViewDataSource: class{
     func getBackgroundColor(index:Int) -> UIColor
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,GADBannerViewDelegate {
+    var bannerView: GADBannerView!
     var trashHintsLoaderImpl: TrashHintsLoader?
     var searchBarTopView: SearchBarTopView?
     var viewWithAdd: ViewWithAdd?
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
         //LoadFromPlistProviderImpl
         loadDataFromPlist = LoadFromPlistProviderImpl()
@@ -57,6 +60,12 @@ class ViewController: UIViewController {
         viewWithAdd = ViewWithAdd(frame: .zero)
         view.addSubview(viewWithAdd!)
         
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        
         //BlurEffectView
         setUpBlurEffectView()
         
@@ -78,6 +87,17 @@ class ViewController: UIViewController {
         setupViewWithTableViewConstraints()
         
         tilesView?.setUpButtons()
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+        viewWithAdd!.addSubview(bannerView)
+        bannerView.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview().offset(0)
+        }
     }
     
     func setUpBlurEffectView(){

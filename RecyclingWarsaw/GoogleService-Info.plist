@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>746764684410-f1tiljkll7sjm7umiapdbrkbc1nljht5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.746764684410-f1tiljkll7sjm7umiapdbrkbc1nljht5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCkIfwmmKm9CjdjnE23wHrCS62aft0mRK8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>746764684410</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.dodocode.recyclingwarsaw</string>
+	<key>PROJECT_ID</key>
+	<string>recyclingwarsaw</string>
+	<key>STORAGE_BUCKET</key>
+	<string>recyclingwarsaw.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:746764684410:ios:7e599380e67af54ec07fc3</string>
+	<key>DATABASE_URL</key>
+	<string>https://recyclingwarsaw.firebaseio.com</string>
+</dict>
+</plist>

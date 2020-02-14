@@ -23,6 +23,7 @@
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
 		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
+		1FE6CAF023F6D241001111E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */; };
 		1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */; };
 		1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */; };
 		1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */; };
@@ -50,6 +51,7 @@
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
 		1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTopView.swift; sourceTree = "<group>"; };
+		1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTableView.swift; sourceTree = "<group>"; };
 		1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintCell.swift; sourceTree = "<group>"; };
 		1FFC202023E9A568007E99F1 /* TrashTypeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTypeDetailsViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				1F75A7B723E87CED0030AC48 /* AppDelegate.swift */,
 				1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */,
 				1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */,
+				1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
 				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
 				1F75A7C523E87CEE0030AC48 /* Info.plist */,
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F75A7C423E87CEE0030AC48 /* LaunchScreen.storyboard in Resources */,
+				1FE6CAF023F6D241001111E8 /* GoogleService-Info.plist in Resources */,
 				1F75A7C123E87CEE0030AC48 /* Assets.xcassets in Resources */,
 				1FFC202323E9D6DE007E99F1 /* TrashDetails.plist in Resources */,
 			);
@@ -453,7 +457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dodocode.RecyclingWarsaw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dodocode.recyclingwarsaw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dodocode.RecyclingWarsaw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dodocode.recyclingwarsaw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
