@@ -31,7 +31,7 @@ class TilesView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        
+        backgroundColor = .gray
         button1 = UIButton(frame: .zero)
         button2 = UIButton(frame: .zero)
         button3 = UIButton(frame: .zero)
@@ -109,6 +109,8 @@ class TilesView: UIView{
        leftAndRightHorizontalStackView.addArrangedSubview(rightVerticalStackView)
        leftAndRightHorizontalStackView.spacing = 0
        leftAndRightHorizontalStackView.distribution = .fillEqually
+        
+       leftAndRightHorizontalStackView.alpha = 0.9
    }
     
 //    func setUpLeftAndRightAndBottomVerticalStackView(){
@@ -120,7 +122,7 @@ class TilesView: UIView{
 //    }
     
     private func setupView() {
-      backgroundColor = .orange
+     // backgroundColor = .orange
     }
     
     required init?(coder: NSCoder) {

@@ -22,15 +22,18 @@ class TrashTypeDetailsViewController: UIViewController {
     var trashFromVC : TrashDetails?
     let bannerViewDetailsAdID = "ca-app-pub-3940256099942544/6300978111"
     var trashTypeDetailsViewControllerDelegate :TrashTypeDetailsViewControllerDelegate?
+    var colorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
-
+        view.backgroundColor = .gray
         
-        view.backgroundColor = UIColor(hexString:(trashFromVC!.color!))
+        colorView = UIView(frame: .zero)
+        colorView.backgroundColor = UIColor(hexString:(trashFromVC!.color!)).withAlphaComponent(0.8)
+        view.addSubview(colorView)
         
         //ViewWithAdd
         viewWithAdd = ViewWithAdd(frame: .zero)
@@ -51,6 +54,11 @@ class TrashTypeDetailsViewController: UIViewController {
         setupViewWithAddConstraints()
         setUpLabelsAndImagesConstraints()
         setupAddBannerViewConstraints()
+
+        colorView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

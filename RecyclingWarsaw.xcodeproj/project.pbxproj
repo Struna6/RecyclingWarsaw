@@ -131,6 +131,7 @@
 		1F75A7AB23E87CED0030AC48 = {
 			isa = PBXGroup;
 			children = (
+				1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */,
 				1F75A7B623E87CED0030AC48 /* RecyclingWarsaw */,
 				1F75A7B523E87CED0030AC48 /* Products */,
 				C09E2D4E1F38530B36B680F6 /* Pods */,
@@ -157,7 +158,6 @@
 				1F75A7B723E87CED0030AC48 /* AppDelegate.swift */,
 				1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */,
 				1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */,
-				1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
 				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
 				1F75A7C523E87CEE0030AC48 /* Info.plist */,

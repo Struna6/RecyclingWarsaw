@@ -117,7 +117,7 @@ class ViewController: UIViewController{
         viewWithTableView?.tableView?.delegate = self
         viewWithTableView?.tableView?.dataSource = self
         viewWithTableView?.tableView?.register(TrashHintCell.self, forCellReuseIdentifier: "trashHintCell")
-        viewWithTableView?.backgroundColor = .yellow
+        //viewWithTableView?.backgroundColor = .yellow
         view.addSubview(viewWithTableView!)
         viewWithTableView?.setConstraints()
         viewWithTableView?.isHidden = true
