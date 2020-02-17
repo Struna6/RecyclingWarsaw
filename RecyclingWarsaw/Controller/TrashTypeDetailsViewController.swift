@@ -99,11 +99,14 @@ class TrashTypeDetailsViewController: UIViewController {
     func setUpCategoryDetailsLabel(){
         categoryDetailsLabel = UILabel()
         categoryDetailsLabel.text = trashFromVC!.description
-        categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 15)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 28)
+        }else{
+            categoryDetailsLabel.font = UIFont(descriptor:.preferredFontDescriptor(withTextStyle: .headline), size: 17)
+        }
         categoryDetailsLabel.adjustsFontSizeToFitWidth = true
         categoryDetailsLabel.textAlignment = .center
         //categoryDetailsLabel.backgroundColor = .purple //HelpfulColor
-        categoryDetailsLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         categoryDetailsLabel.numberOfLines = 0
         view.addSubview(categoryDetailsLabel)
         categoryDetailsLabel.textColor = .white
@@ -125,17 +128,19 @@ class TrashTypeDetailsViewController: UIViewController {
             make.right.equalTo(view).offset(0)
             make.height.equalTo(50)
         }
+        
         trashCategoryImage!.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(trashCategoryNameLabel).offset(70)
-            make.left.equalTo(view).offset(0)
-            make.right.equalTo(view).offset(0)
-            make.height.equalTo(200)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.7)
+            make.width.equalTo(view).multipliedBy(0.5)
+            make.height.equalTo(view).multipliedBy(0.5)
         }
+        
         categoryDetailsLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
             make.left.equalTo(view).offset(20)
             make.right.equalTo(view).offset(-20)
-            make.height.equalTo(200)
+            make.height.equalTo(view).multipliedBy(0.3)
         }
     }
 }
