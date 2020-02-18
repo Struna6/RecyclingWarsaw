@@ -12,4 +12,5 @@ target 'RecyclingWarsaw' do
     pod 'SnapKit', '~> 5.0.0'
     pod 'Firebase/Analytics'
     pod 'Firebase/AdMob'
+    pod 'lottie-ios'
 end

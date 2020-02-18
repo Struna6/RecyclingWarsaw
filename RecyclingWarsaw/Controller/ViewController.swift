@@ -33,6 +33,7 @@ class ViewController: UIViewController{
     var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
     var adsProviderImpl: AdsProvider?
     var trashDetailsFromPlist: [TrashDetails]?
+    var loaderView: LoaderView?
     let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111"
     
     override func viewDidLoad() {
@@ -69,6 +70,9 @@ class ViewController: UIViewController{
         //BlurEffectView
         setUpBlurEffectView()
         
+        //LoaderView
+        setUpLoaderView()
+        
         //ViewWithTableView
         setupViewWithTableView()
         
@@ -87,13 +91,29 @@ class ViewController: UIViewController{
         setupblurEffectViewConstraints()
         setupViewWithTableViewConstraints()
         setupAddBannerViewConstraints()
+        setUpLoaderViewConstraints()
         
         tilesView?.setUpButtons()
     }
     
-   func setupAddBannerViewConstraints(){
+    func setUpLoaderView(){
+        loaderView = LoaderView(animationName: "Loader")
+        view.addSubview(loaderView!)
+        loaderView?.isHidden = true
+    }
+    
+    func setupAddBannerViewConstraints(){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(0)
+        }
+     }
+    
+    func setUpLoaderViewConstraints(){
+        loaderView!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(0)
@@ -264,8 +284,10 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlString = trashHints![indexPath.row].url
+        self.loaderView?.show()
         trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
             guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
+            //self.loaderView?.show()
             trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
             print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
             self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)

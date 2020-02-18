@@ -15,6 +15,8 @@
 		1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */; };
 		1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */; };
 		1F3D1CA923F5E9F900D8BB01 /* TrashHintDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */; };
+		1F4B154423FBECC10045929C /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B154323FBECC10045929C /* LoaderView.swift */; };
+		1F4B154623FBFB270045929C /* Loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F4B154523FBFB270045929C /* Loader.json */; };
 		1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B723E87CED0030AC48 /* AppDelegate.swift */; };
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsProvider.swift; sourceTree = "<group>"; };
 		1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetails.swift; sourceTree = "<group>"; };
 		1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetails.swift; sourceTree = "<group>"; };
+		1F4B154323FBECC10045929C /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		1F4B154523FBFB270045929C /* Loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loader.json; sourceTree = "<group>"; };
 		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */,
 				1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */,
 				1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */,
+				1F4B154323FBECC10045929C /* LoaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE6CAEF23F6D241001111E8 /* GoogleService-Info.plist */,
+				1F4B154523FBFB270045929C /* Loader.json */,
 				1F75A7B623E87CED0030AC48 /* RecyclingWarsaw */,
 				1F75A7B523E87CED0030AC48 /* Products */,
 				C09E2D4E1F38530B36B680F6 /* Pods */,
@@ -245,6 +251,7 @@
 				1F75A7C423E87CEE0030AC48 /* LaunchScreen.storyboard in Resources */,
 				1FE6CAF023F6D241001111E8 /* GoogleService-Info.plist in Resources */,
 				1F75A7C123E87CEE0030AC48 /* Assets.xcassets in Resources */,
+				1F4B154623FBFB270045929C /* Loader.json in Resources */,
 				1FFC202323E9D6DE007E99F1 /* TrashDetails.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +322,7 @@
 				1F0AE4BE23F4863400919C3B /* TrashHintDetailsViewController.swift in Sources */,
 				1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */,
 				1F0AE4BA23F4373700919C3B /* StringExtensions.swift in Sources */,
+				1F4B154423FBECC10045929C /* LoaderView.swift in Sources */,
 				1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */,
 				1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */,
 			);
