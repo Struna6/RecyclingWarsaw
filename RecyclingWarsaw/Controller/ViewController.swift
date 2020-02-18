@@ -106,6 +106,26 @@ class ViewController: UIViewController{
         loaderView?.isHidden = true
     }
     
+    func coverSearchbarWithABlur(){
+        blurEffectView!.snp.removeConstraints()
+        blurEffectView!.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view).offset(0)
+            make.left.equalTo(view).offset(0)
+            make.bottom.equalTo(view).offset(0)
+            make.right.equalTo(view).offset(0)
+        }
+    }
+    
+    func uncoverSearchbarWithABlur(){
+        blurEffectView!.snp.removeConstraints()
+        blurEffectView!.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)
+            make.left.equalTo(view).offset(0)
+            make.bottom.equalTo(view).offset(0)
+            make.right.equalTo(view).offset(0)
+        }
+    }
+    
     func setupAddBannerViewConstraints(){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.snp.makeConstraints { (make) -> Void in
@@ -154,8 +174,10 @@ class ViewController: UIViewController{
     
     @objc func tapOnBlur() {
         searchBarTopView?.searchBar?.isUserInteractionEnabled = false
-        blurEffectView?.hide(duration:0.5){ [weak self] in
+        tilesView?.isUserInteractionEnabled = false
+        blurEffectView?.hide(duration:0.4){ [weak self] in
             self?.searchBarTopView?.searchBar?.isUserInteractionEnabled = true
+            self?.tilesView?.isUserInteractionEnabled = true
         }
         searchBarTopView?.searchBar!.resignFirstResponder()
         searchBarTopView?.searchBar!.text = ""
@@ -217,6 +239,8 @@ extension ViewController: TilesViewDelegate
          detailsVC.trashFromVC = trashDetailsFromPlist![chosenTag - 1]
          detailsVC.trashTypeDetailsViewControllerDelegate = self
          present(detailsVC, animated: true, completion: nil)
+         //coverSearchbarWithABlur()
+         //blurEffectView?.show(duration: 0.5)
      }
 }
 
@@ -232,6 +256,7 @@ extension ViewController: TilesViewDataSource{
 
 extension ViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        uncoverSearchbarWithABlur()
         blurEffectView?.show(duration:0.5)
     }
     
@@ -295,6 +320,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coverSearchbarWithABlur()
         let urlString = trashHints![indexPath.row].url
         self.loaderView?.show()
         searchBarTopView?.searchBar?.resignFirstResponder()
@@ -328,8 +354,10 @@ extension ViewController : TrashTypeDetailsViewControllerDelegate{
         print("RELOAD")
         AdsProvider.reloadAdd(baner: bannerView)
         searchBarTopView?.searchBar?.isUserInteractionEnabled = false
-        blurEffectView?.hide(duration:0.5){ [weak self] in
+        tilesView?.isUserInteractionEnabled = false
+        blurEffectView?.hide(duration:0.1){ [weak self] in
             self?.searchBarTopView?.searchBar?.isUserInteractionEnabled = true
+            self?.tilesView?.isUserInteractionEnabled = true
         }
     }
 }
