@@ -283,7 +283,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     }
 }
 extension ViewController : TrashTypeDetailsViewControllerDelegate{
-    func reloadAdd() {
+    func viewWillDisappear() {
         print("RELOAD")
         AdsProvider.reloadAdd(baner: bannerView)
     }

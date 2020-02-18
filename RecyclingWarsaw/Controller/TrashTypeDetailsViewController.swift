@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 protocol TrashTypeDetailsViewControllerDelegate : class{
-    func reloadAdd()
+    func viewWillDisappear()
 }
 
 class TrashTypeDetailsViewController: UIViewController {
@@ -62,7 +62,7 @@ class TrashTypeDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        trashTypeDetailsViewControllerDelegate?.reloadAdd()
+        trashTypeDetailsViewControllerDelegate?.viewWillDisappear()
     }
     
     func setupAddBannerViewConstraints(){
