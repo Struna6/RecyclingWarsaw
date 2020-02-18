@@ -9,164 +9,96 @@
 import Foundation
 import UIKit
 
+protocol TilesViewDelegate: class{
+    func buttonPressed(in tilesView: TilesView, at index: IndexPath)
+}
+protocol TilesViewDataSource: class{
+    func numberOfRows(in tilesView: TilesView) -> Int
+    func numberOfButtons(in tilesView: TilesView, for row: Int) -> Int
+    func button(in tilesView: TilesView, at index: IndexPath) -> UIButton
+}
+
 class TilesView: UIView{
+    weak var delegate: TilesViewDelegate?
+    weak var dataSource: TilesViewDataSource?{
+        didSet{
+            //uwaga usuwac obecne buttony
+            
+        }
+    }
+    var verticalSpacing = 5
+    var horizontalSpacing = 5
     
-   weak var delegate: TilesViewDelegate?
-   weak var dataSource: TilesViewDataSource?
-    
-    var button1: UIButton!
-    var button2: UIButton!
-    var button3: UIButton!
-    var button4: UIButton!
-    var button5: UIButton!
-    var button6: UIButton!
-    var button7: UIButton!
-    var button8: UIButton!
-    
-    var leftVerticalStackView: UIStackView!
-    var rightVerticalStackView: UIStackView!
-    var leftAndRightHorizontalStackView: UIStackView!
-    var leftAndRightAndBottomVerticalStackView: UIStackView!
+    var wholeStackView: UIStackView!
+    var rowsStackViews = [UIStackView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
         if #available(iOS 13.0, *) {
             backgroundColor = .systemBackground
         } else {
             backgroundColor = .white
         }
-        button1 = UIButton(frame: .zero)
-        button2 = UIButton(frame: .zero)
-        button3 = UIButton(frame: .zero)
-        button4 = UIButton(frame: .zero)
-        button5 = UIButton(frame: .zero)
-        button6 = UIButton(frame: .zero)
-        button7 = UIButton(frame: .zero)
-        button8 = UIButton(frame: .zero)
         
-        setUpLeftVerticalStackView()
-        setUpRightVerticalStackView()
-        setUpLeftAndRightHorizontalStackView()
-        //setUpLeftAndRightAndBottomVerticalStackView()
-        
-        addSubview(leftAndRightHorizontalStackView)
-        leftAndRightHorizontalStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(10)
-            $0.left.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
-            $0.right.equalToSuperview().offset(-10)
+        setUpWholeStackView()
+        addSubview(wholeStackView)
+        wholeStackView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(verticalSpacing)
+            $0.left.equalToSuperview().offset(horizontalSpacing)
+            $0.bottom.equalToSuperview().offset(-verticalSpacing)
+            $0.right.equalToSuperview().offset(-horizontalSpacing)
         }
     }
     
     func setUpButtons(){
-        setUpButton(button: button1, chosenTag: 1) //tag - 1 to index w plist
-        setUpButton(button: button2, chosenTag: 2)
-        setUpButton(button: button3, chosenTag: 3)
-        setUpButton(button: button4, chosenTag: 4)
-        setUpButton(button: button5, chosenTag: 5)
-        setUpButton(button: button6, chosenTag: 6)
-        setUpButton(button: button7, chosenTag: 7)
-        setUpButton(button: button8, chosenTag: 12)
+        guard let rows = dataSource?.numberOfRows(in: self) else {return}
+
+        for row in 0..<rows{
+            let buttons = getButtons(at: row)
+            setUpRowStackView(with: buttons)
+        }
     }
     
-    func setUpButton(button: UIButton, chosenTag:Int){
-        button.tag = chosenTag
-        button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1).withAlphaComponent(0.95)
-        button.layer.cornerRadius = 20.0
-        button.setImage(dataSource?.getImage(index: chosenTag - 1), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        button.addTarget(self, action: #selector(actionWithParam(sender:)), for: .touchUpInside)
-    }
-    
-    @objc func actionWithParam(sender: UIButton){
+    @objc private func actionWithParam(sender: UIButton){
         print("Pressed \(sender.tag)")
-        (delegate as! ViewController).tileTapped(chosenTag: sender.tag)
+        //(delegate as! ViewController).tileTapped(chosenTag: sender.tag)
     }
     
-    func setUpLeftVerticalStackView(){
-        leftVerticalStackView = UIStackView()
-        leftVerticalStackView.axis = .vertical
-        leftVerticalStackView.addArrangedSubview(button1)
-        leftVerticalStackView.addArrangedSubview(button2)
-        leftVerticalStackView.addArrangedSubview(button3)
-        leftVerticalStackView.addArrangedSubview(button7)
-        leftVerticalStackView.spacing = 15
-        leftVerticalStackView.distribution = .fillEqually
+    private func getButtons(at row: Int) -> [UIButton]{
+        guard let columns = dataSource?.numberOfButtons(in: self, for: row) else {return []}
+        var buttons = [UIButton]()
+        for col in 0..<columns{
+            guard dataSource != nil else {continue}
+            let button = dataSource!.button(in: self, at: IndexPath(row: row, section: col))
+            buttons.append(button)
+        }
+        return buttons
     }
     
-    func setUpRightVerticalStackView(){
-        rightVerticalStackView = UIStackView()
-        rightVerticalStackView.axis = .vertical
-        rightVerticalStackView.addArrangedSubview(button4)
-        rightVerticalStackView.addArrangedSubview(button5)
-        rightVerticalStackView.addArrangedSubview(button6)
-        rightVerticalStackView.addArrangedSubview(button8)
-        rightVerticalStackView.spacing = 15
-        rightVerticalStackView.distribution = .fillEqually
+    private func setUpWholeStackView(){
+        wholeStackView = UIStackView()
+        wholeStackView.axis = .vertical
+        wholeStackView.distribution = .fillEqually
+        wholeStackView.alignment = .fill
+        wholeStackView.spacing = CGFloat(verticalSpacing)
     }
     
-    func setUpLeftAndRightHorizontalStackView(){
-       leftAndRightHorizontalStackView = UIStackView()
-       leftAndRightHorizontalStackView.axis = .horizontal
-       leftAndRightHorizontalStackView.addArrangedSubview(leftVerticalStackView)
-       leftAndRightHorizontalStackView.addArrangedSubview(rightVerticalStackView)
-       leftAndRightHorizontalStackView.spacing = 15
-       leftAndRightHorizontalStackView.distribution = .fillEqually
-        
-       //leftAndRightHorizontalStackView.alpha = 0.9
-   }
-    
-//    func setUpLeftAndRightAndBottomVerticalStackView(){
-//        leftAndRightAndBottomVerticalStackView = UIStackView()
-//        leftAndRightAndBottomVerticalStackView.axis = .vertical
-//        leftAndRightAndBottomVerticalStackView.addArrangedSubview(leftAndRightHorizontalStackView)
-//        leftAndRightAndBottomVerticalStackView.addArrangedSubview(button7)
-//        leftAndRightAndBottomVerticalStackView.distribution = .fillProportionally
-//    }
-    
-    private func setupView() {
-     // backgroundColor = .orange
+    private func setUpRowStackView(with buttons: [UIButton]){
+        let stackView = UIStackView()
+        wholeStackView.addArrangedSubview(stackView)
+        wholeStackView.layoutIfNeeded()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = CGFloat(horizontalSpacing)
+        for button in buttons{
+            stackView.addArrangedSubview(button)
+        }
+        stackView.layoutIfNeeded()
+        rowsStackViews.append(stackView)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension UIColor {
-    func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust(by: abs(percentage) )
-    }
-
-    func darker(by percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust(by: -1 * abs(percentage) )
-    }
-
-    func adjust(by percentage: CGFloat = 30.0) -> UIColor? {
-        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
-        if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-            return UIColor(red: min(red + percentage/100, 1.0),
-                           green: min(green + percentage/100, 1.0),
-                           blue: min(blue + percentage/100, 1.0),
-                           alpha: alpha)
-        }else{
-            return nil
-        }
-    }
-}
-
-extension UIButton {
-    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
-        self.clipsToBounds = true  // add this to maintain corner radius
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        if let context = UIGraphicsGetCurrentContext() {
-            context.setFillColor(color.cgColor)
-            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-            let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            self.setBackgroundImage(colorImage, for: forState)
-        }
     }
 }

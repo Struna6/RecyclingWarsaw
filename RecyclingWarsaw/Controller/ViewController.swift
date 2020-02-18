@@ -10,13 +10,7 @@ import UIKit
 import SnapKit
 import GoogleMobileAds
 
-protocol TilesViewDelegate: class{
-    func tileTapped(chosenTag: Int)
-}
-protocol TilesViewDataSource: class{
-    func getImage(index: Int) -> UIImage
-    func getBackgroundColor(index:Int) -> UIColor
-}
+
 
 class ViewController: UIViewController{
     
@@ -59,7 +53,8 @@ class ViewController: UIViewController{
         
         //TilesView
         tilesView = TilesView(frame: .zero)
-        
+        tilesView?.horizontalSpacing = 5
+        tilesView?.verticalSpacing = 5
         tilesView!.delegate = self
         tilesView!.dataSource = self
         view.addSubview(tilesView!)
@@ -96,7 +91,10 @@ class ViewController: UIViewController{
         setupViewWithTableViewConstraints()
         setupAddBannerViewConstraints()
         setUpLoaderViewConstraints()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tilesView?.setUpButtons()
     }
     
@@ -209,21 +207,29 @@ class ViewController: UIViewController{
 
 extension ViewController: TilesViewDelegate
 {
-    func tileTapped(chosenTag: Int){
-         let detailsVC = TrashTypeDetailsViewController()
-         detailsVC.trashFromVC = trashDetailsFromPlist![chosenTag - 1]
-         detailsVC.trashTypeDetailsViewControllerDelegate = self
-         present(detailsVC, animated: true, completion: nil)
-     }
+    func buttonPressed(in tilesView: TilesView, at index: IndexPath) {
+        
+    }
 }
 
 extension ViewController: TilesViewDataSource{
-    func getImage(index: Int) -> UIImage {
-        return UIImage(named:(trashDetailsFromPlist![index].tileImageName!))!
+    func numberOfRows(in tilesView: TilesView) -> Int {
+        return 10
     }
     
-    func getBackgroundColor(index: Int) -> UIColor {
-        return  UIColor(hexString:(trashDetailsFromPlist![index].color!))
+    func numberOfButtons(in tilesView: TilesView, for row: Int) -> Int {
+        if row == 0{
+            return 5
+        }else{
+            return 10
+        }
+    }
+    
+    func button(in tilesView: TilesView, at index: IndexPath) -> UIButton {
+        let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        button.backgroundColor = .red
+        button.layer.cornerRadius = 5
+        return button
     }
 }
 

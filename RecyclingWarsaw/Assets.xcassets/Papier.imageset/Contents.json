@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Papier.png",
+      "filename" : "KAROL_NEWPapier.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "KAROL_NEWPapier@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "KAROL_NEWPapier@3x.png",
       "scale" : "3x"
     }
   ],

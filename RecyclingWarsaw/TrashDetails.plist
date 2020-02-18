@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Elektrośmieci</string>
+		<string>Elektrosmieci</string>
 		<key>description</key>
 		<string>-</string>
 		<key>imageName</key>
@@ -108,7 +108,7 @@
 		<key>color</key>
 		<string>#8e1412</string>
 		<key>tileImageName</key>
-		<string>Elektrośmieci</string>
+		<string>Elektrosmieci</string>
 	</dict>
 	<dict>
 		<key>name</key>
