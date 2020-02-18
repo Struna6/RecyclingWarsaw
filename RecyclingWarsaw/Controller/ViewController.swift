@@ -25,7 +25,7 @@ class ViewController: UIViewController{
     var searchBarTopView: SearchBarTopView?
     var viewWithAdd: ViewWithAdd?
     var tilesView: TilesView?
-    var blurEffectView: UIVisualEffectView?
+    var blurEffectView: BlurView?
     var viewWithTableView: ViewWithTableView?
     var cellHeight = 60.0
     var trashHints: [TrashHint]?
@@ -132,7 +132,7 @@ class ViewController: UIViewController{
         } else {
             blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         }
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView = BlurView(effect: blurEffect)
         blurEffectView!.frame = view.bounds
         view.addSubview(blurEffectView!)
         blurEffectView?.isHidden = true
@@ -153,7 +153,10 @@ class ViewController: UIViewController{
     }
     
     @objc func tapOnBlur() {
-        blurEffectView?.isHidden = true
+        searchBarTopView?.searchBar?.isUserInteractionEnabled = false
+        blurEffectView?.hide(duration:0.5){ [weak self] in
+            self?.searchBarTopView?.searchBar?.isUserInteractionEnabled = true
+        }
         searchBarTopView?.searchBar!.resignFirstResponder()
         searchBarTopView?.searchBar!.text = ""
         viewWithTableView?.isHidden = true
@@ -229,7 +232,7 @@ extension ViewController: TilesViewDataSource{
 
 extension ViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        blurEffectView?.isHidden = false
+        blurEffectView?.show(duration:0.5)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -324,6 +327,9 @@ extension ViewController : TrashTypeDetailsViewControllerDelegate{
     func viewDidDisappear() {
         print("RELOAD")
         AdsProvider.reloadAdd(baner: bannerView)
-        self.blurEffectView?.isHidden = true
+        searchBarTopView?.searchBar?.isUserInteractionEnabled = false
+        blurEffectView?.hide(duration:0.5){ [weak self] in
+            self?.searchBarTopView?.searchBar?.isUserInteractionEnabled = true
+        }
     }
 }

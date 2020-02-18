@@ -108,20 +108,11 @@ class LoaderView: UIView{
         if activityIndicator != nil {
             activityIndicator!.startAnimating()
         }else{
-//            animationView?.play()
             animationView?.play(toFrame: 110)
         }
 
         UIView.animate(withDuration: 1.5,animations: { [weak self] in
             self?.alpha = 1
-        }, completion: { [weak self]
-            (value: Bool) in
-//            if self?.activityIndicator != nil {
-//                self?.activityIndicator!.startAnimating()
-//            }else{
-//                self?.animationView?.play()
-//            }
-            print("obracanko")
         })
     }
     
@@ -136,7 +127,7 @@ class LoaderView: UIView{
             }else{
                 self?.animationView?.stop()
             }
+            self?.isHidden = true
         })
-        isHidden = true
     }
 }
