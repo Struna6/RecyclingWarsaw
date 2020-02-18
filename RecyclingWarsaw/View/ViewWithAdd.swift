@@ -17,7 +17,11 @@ class ViewWithAdd: UIView{
     }
     
     private func setupView() {
-      backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            backgroundColor = .systemBackground
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     required init?(coder: NSCoder) {

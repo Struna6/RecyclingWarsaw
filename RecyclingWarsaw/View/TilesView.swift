@@ -31,7 +31,11 @@ class TilesView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        backgroundColor = .gray
+        if #available(iOS 13.0, *) {
+            backgroundColor = .systemBackground
+        } else {
+            backgroundColor = .white
+        }
         button1 = UIButton(frame: .zero)
         button2 = UIButton(frame: .zero)
         button3 = UIButton(frame: .zero)
@@ -48,10 +52,10 @@ class TilesView: UIView{
         
         addSubview(leftAndRightHorizontalStackView)
         leftAndRightHorizontalStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(0)
-            $0.left.equalToSuperview().offset(0)
-            $0.bottom.equalToSuperview().offset(0)
-            $0.right.equalToSuperview().offset(0)
+            $0.top.equalToSuperview().offset(10)
+            $0.left.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.right.equalToSuperview().offset(-10)
         }
     }
     
@@ -68,7 +72,8 @@ class TilesView: UIView{
     
     func setUpButton(button: UIButton, chosenTag:Int){
         button.tag = chosenTag
-        button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1)
+        button.backgroundColor = dataSource?.getBackgroundColor(index: chosenTag - 1).withAlphaComponent(0.95)
+        button.layer.cornerRadius = 20.0
         button.setImage(dataSource?.getImage(index: chosenTag - 1), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
@@ -87,7 +92,7 @@ class TilesView: UIView{
         leftVerticalStackView.addArrangedSubview(button2)
         leftVerticalStackView.addArrangedSubview(button3)
         leftVerticalStackView.addArrangedSubview(button7)
-        leftVerticalStackView.spacing = 0
+        leftVerticalStackView.spacing = 15
         leftVerticalStackView.distribution = .fillEqually
     }
     
@@ -98,7 +103,7 @@ class TilesView: UIView{
         rightVerticalStackView.addArrangedSubview(button5)
         rightVerticalStackView.addArrangedSubview(button6)
         rightVerticalStackView.addArrangedSubview(button8)
-        rightVerticalStackView.spacing = 0
+        rightVerticalStackView.spacing = 15
         rightVerticalStackView.distribution = .fillEqually
     }
     
@@ -107,10 +112,10 @@ class TilesView: UIView{
        leftAndRightHorizontalStackView.axis = .horizontal
        leftAndRightHorizontalStackView.addArrangedSubview(leftVerticalStackView)
        leftAndRightHorizontalStackView.addArrangedSubview(rightVerticalStackView)
-       leftAndRightHorizontalStackView.spacing = 0
+       leftAndRightHorizontalStackView.spacing = 15
        leftAndRightHorizontalStackView.distribution = .fillEqually
         
-       leftAndRightHorizontalStackView.alpha = 0.9
+       //leftAndRightHorizontalStackView.alpha = 0.9
    }
     
 //    func setUpLeftAndRightAndBottomVerticalStackView(){

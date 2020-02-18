@@ -17,14 +17,22 @@ class SearchBarTopView: UIView{
       super.init(frame: frame)
       setupView()
       searchBar = UISearchBar()
-      searchBar?.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            searchBar?.backgroundColor = .systemBackground
+        } else {
+            // Fallback on earlier versions
+        }
       searchBar?.searchBarStyle = .minimal
       addSubview(searchBar!)
       setUpSearchBarConstraints()
     }
     
     private func setupView() {
-      backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            backgroundColor = .systemBackground
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     required init?(coder: NSCoder) {

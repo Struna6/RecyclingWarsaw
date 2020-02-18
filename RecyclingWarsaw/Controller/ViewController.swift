@@ -51,7 +51,11 @@ class ViewController: UIViewController{
         view.addSubview(searchBarTopView!)
         
         //ViewController
-        view.backgroundColor = .systemBackground //HelpfulColor
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            // Fallback on earlier versions
+        } //HelpfulColor
         
         //TilesView
         tilesView = TilesView(frame: .zero)
@@ -122,7 +126,12 @@ class ViewController: UIViewController{
     }
     
     func setUpBlurEffectView(){
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
+        var blurEffect: UIBlurEffect
+        if #available(iOS 13.0, *) {
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
+        } else {
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        }
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView!.frame = view.bounds
         view.addSubview(blurEffectView!)

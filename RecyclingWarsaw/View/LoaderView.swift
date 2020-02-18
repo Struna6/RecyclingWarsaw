@@ -58,8 +58,16 @@ class LoaderView: UIView{
     }
     
     func setUpActivityIndicator(){
-        activityIndicator = UIActivityIndicatorView.init(style: .large)
-        activityIndicator?.color = .label
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView.init(style: .large)
+        } else {
+            // Fallback on earlier versions
+        }
+        if #available(iOS 13.0, *) {
+            activityIndicator?.color = .label
+        } else {
+            // Fallback on earlier versions
+        }
         addSubview(activityIndicator!)
         //activityIndicator!.center = center
         //activityIndicator!.backgroundColor = .yellow
@@ -72,7 +80,12 @@ class LoaderView: UIView{
     }
     
     func setUpBlurEffectView(){
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
+        var blurEffect : UIBlurEffect
+        if #available(iOS 13.0, *) {
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
+        } else {
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        }
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView!.frame = bounds
         addSubview(blurEffectView!)
