@@ -97,7 +97,7 @@ class ViewController: UIViewController{
     }
     
     func setUpLoaderView(){
-        loaderView = LoaderView(animationName: "Loader")
+        loaderView = LoaderView(animationName: "Loader2")
         view.addSubview(loaderView!)
         loaderView?.isHidden = true
     }
@@ -181,7 +181,7 @@ class ViewController: UIViewController{
         blurEffectView!.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view).offset(0)
             make.top.equalTo(searchBarTopView!.snp.bottom).offset(0)//.priority jakby cos sie stalo
-            make.bottom.equalTo(viewWithAdd!.snp.top).offset(0)
+            make.bottom.equalTo(view).offset(0)
             make.right.equalTo(view).offset(0)
         }
     }
@@ -285,12 +285,19 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlString = trashHints![indexPath.row].url
         self.loaderView?.show()
+        searchBarTopView?.searchBar?.resignFirstResponder()
+        searchBarTopView?.searchBar?.text = ""
+        searchBar((searchBarTopView?.searchBar!)!, textDidChange: "")
         trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
-            guard trashHintDetails != nil else {return} //PRZYPADEK - NieZwróconoZHTMLAszczegółów
+            guard trashHintDetails != nil else {
+                self.loaderView?.hide()
+                return
+            } //PRZYPADEK - NieZwróconoZHTMLAszczegółów
             //self.loaderView?.show()
             trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
             print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
             self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
+            self.loaderView?.hide()
         })
     }
     
@@ -305,8 +312,9 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     }
 }
 extension ViewController : TrashTypeDetailsViewControllerDelegate{
-    func viewWillDisappear() {
+    func viewDidDisappear() {
         print("RELOAD")
         AdsProvider.reloadAdd(baner: bannerView)
+        self.blurEffectView?.isHidden = true
     }
 }

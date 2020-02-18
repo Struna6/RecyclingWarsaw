@@ -43,14 +43,16 @@ class LoaderView: UIView{
     func setUpLottieLoader(animationName : String){
         animationView = AnimationView(animation: Animation.named(animationName))
         animationView?.loopMode = .loop
-        animationView?.animationSpeed = 2
+        animationView?.backgroundBehavior = .pauseAndRestore
+        animationView?.animationSpeed = 1
+//        animationView?.play(toFrame: 75)
         addSubview(animationView!)
     }
     
     func setUpLottieLoaderConstraints(){
         animationView!.snp.makeConstraints { (make) -> Void in
             make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.4)
+            make.width.equalToSuperview()//.multipliedBy(1)
             make.height.equalTo(animationView!.snp.width)
         }
     }
@@ -93,7 +95,8 @@ class LoaderView: UIView{
         if activityIndicator != nil {
             activityIndicator!.startAnimating()
         }else{
-            animationView?.play()
+//            animationView?.play()
+            animationView?.play(toFrame: 110)
         }
 
         UIView.animate(withDuration: 1.5,animations: { [weak self] in
