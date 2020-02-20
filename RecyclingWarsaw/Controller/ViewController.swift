@@ -24,7 +24,7 @@ class ViewController: UIViewController{
     var trashHintsLoaderImpl: TrashHintsLoader?
     var searchBarTopView: SearchBarTopView?
     var viewWithAdd: ViewWithAdd?
-    var tilesView: TilesView?
+    var tilesView: UniversalTilesView?
     var blurEffectView: BlurView?
     var viewWithTableView: ViewWithTableView?
     var cellHeight = 60.0
@@ -32,7 +32,7 @@ class ViewController: UIViewController{
     var loadDataFromPlist : LoadFromPlistProvider?
     var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
     var adsProviderImpl: AdsProvider?
-    var trashDetailsFromPlist: [TrashDetails]?
+    var trashDetailsFromPlist: [TrashDetails]?//dodać w plist boola czy na stronie
     var loaderView: LoaderView?
     let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111"
     
@@ -44,6 +44,8 @@ class ViewController: UIViewController{
         loadDataFromPlist = LoadFromPlistProviderImpl()
         
         trashDetailsFromPlist = loadDataFromPlist!.loadInfoFromPlist()
+        
+        //funkcja ktora wyciagnie potrzebne i do zmiennej wlozy
         
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
@@ -58,7 +60,9 @@ class ViewController: UIViewController{
         } //HelpfulColor
         
         //TilesView
-        tilesView = TilesView(frame: .zero)
+        tilesView = UniversalTilesView()
+        tilesView?.elementsHorizontalSpacing = 10
+        tilesView?.rowsVerticalSpacing = 10
         
         tilesView!.delegate = self
         tilesView!.dataSource = self
@@ -97,7 +101,7 @@ class ViewController: UIViewController{
         setupAddBannerViewConstraints()
         setUpLoaderViewConstraints()
         
-        tilesView?.setUpButtons()
+        //tilesView?.setUpButtons()
     }
     
     func setUpLoaderView(){
@@ -349,7 +353,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         self.present(detailsVC, animated: true, completion: nil)
     }
 }
-extension ViewController : TrashTypeDetailsViewControllerDelegate{
+
+extension ViewController: TrashTypeDetailsViewControllerDelegate{
     func viewDidDisappear() {
         print("RELOAD")
         AdsProvider.reloadAdd(baner: bannerView)
@@ -359,5 +364,29 @@ extension ViewController : TrashTypeDetailsViewControllerDelegate{
             self?.searchBarTopView?.searchBar?.isUserInteractionEnabled = true
             self?.tilesView?.isUserInteractionEnabled = true
         }
+    }
+}
+
+extension ViewController: UniversalTilesViewDataSource, UniversalTilesViewDelegate{
+    func numberOfRows(in tilesView: UniversalTilesView) -> Int {
+        return 4
+    }
+    
+    func numberOfElements(in tilesView: UniversalTilesView, at row: Int) -> Int {
+        if row == 1 {
+            return 2
+        }
+        return 5
+    }
+    
+    func buttonForRow(in tilesView: UniversalTilesView, at indexPath: IndexPath) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.layer.cornerRadius = 20.0
+        return button
+    }
+    
+    func didSelectElement(in tilesView: UniversalTilesView, at indexPath: IndexPath) {
+        print("Dupa")
     }
 }

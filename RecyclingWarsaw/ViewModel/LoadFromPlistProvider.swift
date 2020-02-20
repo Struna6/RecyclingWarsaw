@@ -29,4 +29,5 @@ class LoadFromPlistProviderImpl: LoadFromPlistProvider{
         }
         return nil
     }
+    //funkcja która zwróci tablice podwójna dla tych które w boolu mają ze są na main
 }
