@@ -13,6 +13,8 @@
 		<string>#feb72b</string>
 		<key>tileImageName</key>
 		<string>Metale</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -25,6 +27,8 @@
 		<string>#995f35</string>
 		<key>tileImageName</key>
 		<string>Bio</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -37,6 +41,8 @@
 		<string>#3baf28</string>
 		<key>tileImageName</key>
 		<string>Szkło</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -49,6 +55,8 @@
 		<string>#53585a</string>
 		<key>tileImageName</key>
 		<string>Zielone</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -61,6 +69,8 @@
 		<string>#1071ce</string>
 		<key>tileImageName</key>
 		<string>Papier</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -73,6 +83,8 @@
 		<string>#fc6520</string>
 		<key>tileImageName</key>
 		<string>Wielkogabarytowe</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -85,6 +97,8 @@
 		<string>#242121</string>
 		<key>tileImageName</key>
 		<string>Zmieszane</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -97,6 +111,8 @@
 		<string>#8e1412</string>
 		<key>tileImageName</key>
 		<string>Baterie</string>
+		<key>inMenu</key>
+		<false/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -109,6 +125,8 @@
 		<string>#8e1412</string>
 		<key>tileImageName</key>
 		<string>Elektrośmieci</string>
+		<key>inMenu</key>
+		<false/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -121,6 +139,8 @@
 		<string>#9a5f30</string>
 		<key>tileImageName</key>
 		<string>Leki</string>
+		<key>inMenu</key>
+		<false/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -133,6 +153,8 @@
 		<string>#19b370</string>
 		<key>tileImageName</key>
 		<string>Pozostałe</string>
+		<key>inMenu</key>
+		<false/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -145,6 +167,8 @@
 		<string>#8e1412</string>
 		<key>tileImageName</key>
 		<string>Inne</string>
+		<key>inMenu</key>
+		<true/>
 	</dict>
 </array>
 </plist>

@@ -10,21 +10,13 @@ import UIKit
 import SnapKit
 import GoogleMobileAds
 
-protocol TilesViewDelegate: class{
-    func tileTapped(chosenTag: Int)
-}
-protocol TilesViewDataSource: class{
-    func getImage(index: Int) -> UIImage
-    func getBackgroundColor(index:Int) -> UIColor
-}
-
 class ViewController: UIViewController{
     
     var bannerView: GADBannerView!
     var trashHintsLoaderImpl: TrashHintsLoader?
     var searchBarTopView: SearchBarTopView?
     var viewWithAdd: ViewWithAdd?
-    var tilesView: UniversalTilesView?
+    var tilesView: TilesView?
     var blurEffectView: BlurView?
     var viewWithTableView: ViewWithTableView?
     var cellHeight = 60.0
@@ -33,6 +25,7 @@ class ViewController: UIViewController{
     var trashHintDetailsProviderImpl: TrashHintDetailsProvider?
     var adsProviderImpl: AdsProvider?
     var trashDetailsFromPlist: [TrashDetails]?//dodać w plist boola czy na stronie
+    var trashDetailsFromPlistMenu: [[TrashDetails]]?
     var loaderView: LoaderView?
     let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111"
     
@@ -46,6 +39,7 @@ class ViewController: UIViewController{
         trashDetailsFromPlist = loadDataFromPlist!.loadInfoFromPlist()
         
         //funkcja ktora wyciagnie potrzebne i do zmiennej wlozy
+        trashDetailsFromPlistMenu = loadDataFromPlist!.loadMenuInfoFromPlist()
         
         //SearchBarTopView
         searchBarTopView = SearchBarTopView(frame: .zero)
@@ -60,7 +54,7 @@ class ViewController: UIViewController{
         } //HelpfulColor
         
         //TilesView
-        tilesView = UniversalTilesView()
+        tilesView = TilesView()
         tilesView?.elementsHorizontalSpacing = 10
         tilesView?.rowsVerticalSpacing = 10
         
@@ -236,28 +230,6 @@ class ViewController: UIViewController{
     }
 }
 
-extension ViewController: TilesViewDelegate
-{
-    func tileTapped(chosenTag: Int){
-         let detailsVC = TrashTypeDetailsViewController()
-         detailsVC.trashFromVC = trashDetailsFromPlist![chosenTag - 1]
-         detailsVC.trashTypeDetailsViewControllerDelegate = self
-         present(detailsVC, animated: true, completion: nil)
-         //coverSearchbarWithABlur()
-         //blurEffectView?.show(duration: 0.5)
-     }
-}
-
-extension ViewController: TilesViewDataSource{
-    func getImage(index: Int) -> UIImage {
-        return UIImage(named:(trashDetailsFromPlist![index].tileImageName!))!
-    }
-    
-    func getBackgroundColor(index: Int) -> UIColor {
-        return  UIColor(hexString:(trashDetailsFromPlist![index].color!))
-    }
-}
-
 extension ViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         uncoverSearchbarWithABlur()
@@ -367,26 +339,34 @@ extension ViewController: TrashTypeDetailsViewControllerDelegate{
     }
 }
 
-extension ViewController: UniversalTilesViewDataSource, UniversalTilesViewDelegate{
-    func numberOfRows(in tilesView: UniversalTilesView) -> Int {
-        return 4
+extension ViewController: TilesViewDataSource, TilesViewDelegate{
+    func numberOfRows(in tilesView: TilesView) -> Int {
+        return trashDetailsFromPlistMenu!.count
     }
     
-    func numberOfElements(in tilesView: UniversalTilesView, at row: Int) -> Int {
-        if row == 1 {
-            return 2
-        }
-        return 5
+    func numberOfElements(in tilesView: TilesView, at row: Int) -> Int {
+       return trashDetailsFromPlistMenu![row].count
     }
     
-    func buttonForRow(in tilesView: UniversalTilesView, at indexPath: IndexPath) -> UIButton {
+    func buttonForRow(in tilesView: TilesView, at indexPath: IndexPath) -> UIButton {
         let button = UIButton()
         button.backgroundColor = .red
         button.layer.cornerRadius = 20.0
+        let element = trashDetailsFromPlistMenu![indexPath.row][indexPath.section]
+        button.backgroundColor = UIColor(hexString:element.color!).withAlphaComponent(0.95)
+        button.setImage(UIImage(named: element.tileImageName!), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
+        
         return button
     }
     
-    func didSelectElement(in tilesView: UniversalTilesView, at indexPath: IndexPath) {
-        print("Dupa")
+    func didSelectElement(in tilesView: TilesView, at indexPath: IndexPath) {
+        let detailsVC = TrashTypeDetailsViewController()
+        print(indexPath.row)
+        print(indexPath.section)
+        detailsVC.trashFromVC = trashDetailsFromPlistMenu![indexPath.row][indexPath.section]
+        detailsVC.trashTypeDetailsViewControllerDelegate = self
+        present(detailsVC, animated: true, completion: nil)
     }
 }

@@ -14,4 +14,5 @@ class TrashDetails: Decodable{
     var imageName: String?
     var color: String?
     var tileImageName: String?
+    var inMenu: Bool?
 }

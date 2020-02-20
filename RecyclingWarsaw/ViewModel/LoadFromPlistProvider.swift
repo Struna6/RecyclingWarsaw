@@ -11,6 +11,7 @@ import Foundation
 
 protocol LoadFromPlistProvider: class{
     func loadInfoFromPlist() -> [TrashDetails]?
+    func loadMenuInfoFromPlist() -> [[TrashDetails]]?
 }
 
 class LoadFromPlistProviderImpl: LoadFromPlistProvider{
@@ -29,5 +30,21 @@ class LoadFromPlistProviderImpl: LoadFromPlistProvider{
         }
         return nil
     }
-    //funkcja która zwróci tablice podwójna dla tych które w boolu mają ze są na main
+    
+    func loadMenuInfoFromPlist() -> [[TrashDetails]]?{
+        var trashDetailsTwoDimensions = [[TrashDetails]]()
+        let chosenElements = loadInfoFromPlist()?.filter(){
+            ($0.inMenu ?? false)
+        }
+
+        let first: [TrashDetails] = Array(chosenElements![0...1])
+        let second: [TrashDetails] = Array(chosenElements![2...3])
+        let third: [TrashDetails] = Array(chosenElements![4...5])
+        let forth: [TrashDetails] = Array(chosenElements![6...7])
+        
+        trashDetailsTwoDimensions = [first,second,third,forth]
+        
+        return trashDetailsTwoDimensions
+    }
+
 }

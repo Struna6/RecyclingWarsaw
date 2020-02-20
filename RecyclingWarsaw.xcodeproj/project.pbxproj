@@ -11,8 +11,8 @@
 		1F0AE4BC23F43C4200919C3B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */; };
 		1F0AE4BE23F4863400919C3B /* TrashHintDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AE4BD23F4863400919C3B /* TrashHintDetailsViewController.swift */; };
 		1F14E5E123FEB63900D58923 /* UniversalTilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14E5E023FEB63900D58923 /* UniversalTilesView.swift */; };
+		1F14E5E323FEE37C00D58923 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14E5E223FEE37C00D58923 /* UIButtonExtensions.swift */; };
 		1F34E20623E8A9B60042C017 /* ViewWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */; };
-		1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34E20723E8ABA30042C017 /* TilesView.swift */; };
 		1F3D1CA523F5D98700D8BB01 /* TrashHintDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */; };
 		1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */; };
 		1F3D1CA923F5E9F900D8BB01 /* TrashHintDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */; };
@@ -43,8 +43,8 @@
 		1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		1F0AE4BD23F4863400919C3B /* TrashHintDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsViewController.swift; sourceTree = "<group>"; };
 		1F14E5E023FEB63900D58923 /* UniversalTilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTilesView.swift; sourceTree = "<group>"; };
+		1F14E5E223FEE37C00D58923 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		1F34E20523E8A9B60042C017 /* ViewWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithAdd.swift; sourceTree = "<group>"; };
-		1F34E20723E8ABA30042C017 /* TilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesView.swift; sourceTree = "<group>"; };
 		1F3D1CA423F5D98700D8BB01 /* TrashHintDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetailsProvider.swift; sourceTree = "<group>"; };
 		1F3D1CA623F5E9D400D8BB01 /* TrashDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDetails.swift; sourceTree = "<group>"; };
 		1F3D1CA823F5E9F900D8BB01 /* TrashHintDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintDetails.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 		1F0AE4B523F431C200919C3B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F34E20723E8ABA30042C017 /* TilesView.swift */,
 				1F14E5E023FEB63900D58923 /* UniversalTilesView.swift */,
 				1F4B154B23FC86A40045929C /* BlurView.swift */,
 				1FEE594123F184BC00E5EA58 /* ViewWithTableView.swift */,
@@ -126,6 +125,7 @@
 			children = (
 				1F0AE4B923F4373700919C3B /* StringExtensions.swift */,
 				1F0AE4BB23F43C4200919C3B /* UIColorExtensions.swift */,
+				1F14E5E223FEE37C00D58923 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,8 +317,8 @@
 			files = (
 				1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */,
 				1F0AE4BC23F43C4200919C3B /* UIColorExtensions.swift in Sources */,
+				1F14E5E323FEE37C00D58923 /* UIButtonExtensions.swift in Sources */,
 				1F75A7B823E87CED0030AC48 /* AppDelegate.swift in Sources */,
-				1F34E20823E8ABA30042C017 /* TilesView.swift in Sources */,
 				1FEE594423F1879D00E5EA58 /* TrashHintCell.swift in Sources */,
 				1FEE594223F184BC00E5EA58 /* ViewWithTableView.swift in Sources */,
 				1F3D1CA723F5E9D400D8BB01 /* TrashDetails.swift in Sources */,

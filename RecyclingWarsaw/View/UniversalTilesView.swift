@@ -10,20 +10,19 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol UniversalTilesViewDataSource : class{
-    func numberOfRows(in tilesView: UniversalTilesView) -> Int
-    //func tilesView(_ tilesView: UniversalTilesView, numberOfElementsInRow row: Int) -> Int
-    func numberOfElements(in tilesView: UniversalTilesView,at row: Int) -> Int
-    func buttonForRow(in tilesView: UniversalTilesView, at indexPath: IndexPath) -> UIButton
+protocol TilesViewDataSource : class{
+    func numberOfRows(in tilesView: TilesView) -> Int
+    func numberOfElements(in tilesView: TilesView,at row: Int) -> Int
+    func buttonForRow(in tilesView: TilesView, at indexPath: IndexPath) -> UIButton
 }
 
-protocol UniversalTilesViewDelegate : class{
-    func didSelectElement(in tilesView: UniversalTilesView, at indexPath: IndexPath)
+protocol TilesViewDelegate : class{
+    func didSelectElement(in tilesView: TilesView, at indexPath: IndexPath)
 }
 
-class UniversalTilesView: UIView{
-    weak var delegate: UniversalTilesViewDelegate?
-    weak var dataSource: UniversalTilesViewDataSource?{
+class TilesView: UIView{
+    weak var delegate: TilesViewDelegate?
+    weak var dataSource: TilesViewDataSource?{
         didSet{
             setUpRowsStackView()
             setUpRowElements()
@@ -64,12 +63,12 @@ class UniversalTilesView: UIView{
         for row in 0..<numberOfRows{
             guard let numberOfElements = dataSource?.numberOfElements(in: self, at: row) else {continue}
             for element in 0..<numberOfElements{
-            howManyElements += 1
                 if sender.tag == howManyElements{
                     indexPath = IndexPath(row: row, section: element)
                     delegate?.didSelectElement(in: self, at: indexPath!)
                     return
                 }
+                howManyElements += 1
             }
         }
     }
