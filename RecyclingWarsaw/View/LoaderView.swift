@@ -61,12 +61,12 @@ class LoaderView: UIView{
         if #available(iOS 13.0, *) {
             activityIndicator = UIActivityIndicatorView.init(style: .large)
         } else {
-            // Fallback on earlier versions
+            activityIndicator = UIActivityIndicatorView.init() //CO TU?
         }
         if #available(iOS 13.0, *) {
             activityIndicator?.color = .label
         } else {
-            // Fallback on earlier versions
+            activityIndicator?.color = .white
         }
         addSubview(activityIndicator!)
         //activityIndicator!.center = center
@@ -84,7 +84,7 @@ class LoaderView: UIView{
         if #available(iOS 13.0, *) {
             blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
         } else {
-            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         }
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView!.frame = bounds

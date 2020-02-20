@@ -20,7 +20,7 @@ class ViewWithAdd: UIView{
         if #available(iOS 13.0, *) {
             backgroundColor = .systemBackground
         } else {
-            // Fallback on earlier versions
+            backgroundColor = .white
         }
     }
     

@@ -54,7 +54,7 @@ class ViewController: UIViewController{
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
         } else {
-            // Fallback on earlier versions
+            view.backgroundColor = .white
         } //HelpfulColor
         
         //TilesView
@@ -150,7 +150,7 @@ class ViewController: UIViewController{
         if #available(iOS 13.0, *) {
             blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterial)
         } else {
-            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         }
         blurEffectView = BlurView(effect: blurEffect)
         blurEffectView!.frame = view.bounds
