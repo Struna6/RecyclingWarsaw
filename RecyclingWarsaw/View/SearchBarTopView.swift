@@ -23,6 +23,7 @@ class SearchBarTopView: UIView{
             searchBar?.backgroundColor = .white
         }
       searchBar?.searchBarStyle = .minimal
+      searchBar?.placeholder = "Wyszukaj produkt"
       addSubview(searchBar!)
       setUpSearchBarConstraints()
     }
