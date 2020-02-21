@@ -27,6 +27,7 @@ class ViewController: UIViewController{
     var trashDetailsFromPlist: [TrashDetails]?//dodać w plist boola czy na stronie
     var trashDetailsFromPlistMenu: [[TrashDetails]]?
     var loaderView: LoaderView?
+    var canSendEmail = true
     let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111" //Testowe ID
     //let bannerViewMainAdID = "ca-app-pub-3774653118074483/8906112332"//Dobre ID
     
@@ -165,6 +166,7 @@ class ViewController: UIViewController{
         viewWithTableView?.tableView?.delegate = self
         viewWithTableView?.tableView?.dataSource = self
         viewWithTableView?.tableView?.register(TrashHintCell.self, forCellReuseIdentifier: "trashHintCell")
+        viewWithTableView?.tableView?.register(EmailCell.self, forCellReuseIdentifier: "emailCell")
         //viewWithTableView?.backgroundColor = .yellow
         view.addSubview(viewWithTableView!)
         viewWithTableView?.setConstraints()
@@ -258,8 +260,8 @@ extension ViewController: UISearchBarDelegate{
                     let frameHeight = self?.view.frame.height
                     let howManyCellsCanBeVisible = floor(((Double(frameHeight!))/2)/(self?.cellHeight ?? 1.0))
                     let calculatedHeight = floor(((Double(frameHeight ?? 1.0))/2)/(self?.cellHeight ?? 1.0))*(self?.cellHeight ?? 1.0)
-                    
-                    if self?.trashHints!.count ?? 0 > Int(howManyCellsCanBeVisible){
+                    let howManyCellsAreInTable = (self?.canSendEmail ?? true) ? ((self?.trashHints!.count ?? 0) + 1) : (self?.trashHints!.count ?? 0)
+                    if howManyCellsAreInTable > Int(howManyCellsCanBeVisible){
                         //maksymalna wysokosc i pozwol na scrollowanie
                         self?.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
                             make.height.equalTo(calculatedHeight)
@@ -268,7 +270,7 @@ extension ViewController: UISearchBarDelegate{
                     }else{
                         //obliczona dla malej liczby elementow wysokosc i nie pozwalaj na scrollowanie
                         self?.viewWithTableView!.snp.updateConstraints  { (make) -> Void in
-                            make.height.equalTo((self?.trashHints!.count ?? 1) * Int(self?.cellHeight ?? 1.0))
+                            make.height.equalTo((howManyCellsAreInTable) * Int(self?.cellHeight ?? 1.0))
                         }
                         self?.viewWithTableView?.tableView?.isScrollEnabled = false
                     }
@@ -301,12 +303,21 @@ extension ViewController: UISearchBarDelegate{
 extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard trashHints != nil else {return 0}
-        return trashHints!.count
+        if canSendEmail{
+            return trashHints!.count + 1
+        }else{
+            return trashHints!.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if canSendEmail && indexPath.row >= trashHints!.count {
+            let emailCell = tableView.dequeueReusableCell(withIdentifier: "emailCell", for: indexPath) as! EmailCell
+            emailCell.theTextLabel.text = "Nie możesz znaleźć \"\(searchBarTopView!.searchBar!.text!)\"? Wyślij maila z prośbą o dodanie tego produktu."
+            return emailCell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "trashHintCell", for: indexPath) as! TrashHintCell
-        cell.trashNameLabel.text = trashHints![indexPath.row].label
+        cell.trashNameLabel.text = trashHints?[indexPath.row].label
         return cell
     }
     
@@ -315,6 +326,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) is TrashHintCell else {
+            if canSendEmail{
+            print("Wyślij Email")
+            }
+            return
+        }
         coverSearchbarWithABlur()
         let urlString = trashHints![indexPath.row].url
         self.loaderView?.show()
