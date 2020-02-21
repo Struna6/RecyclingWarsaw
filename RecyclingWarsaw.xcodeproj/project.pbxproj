@@ -53,7 +53,7 @@
 		1F4B154723FC063E0045929C /* Loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loader.json; sourceTree = "<group>"; };
 		1F4B154923FC11000045929C /* Loader2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loader2.json; sourceTree = "<group>"; };
 		1F4B154B23FC86A40045929C /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecyclingWarsaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F75A7B423E87CED0030AC48 /* Segregacja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Segregacja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F75A7B723E87CED0030AC48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1F75A7BB23E87CED0030AC48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		1F75A7B523E87CED0030AC48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */,
+				1F75A7B423E87CED0030AC48 /* Segregacja.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			);
 			name = RecyclingWarsaw;
 			productName = RecyclingWarsaw;
-			productReference = 1F75A7B423E87CED0030AC48 /* RecyclingWarsaw.app */;
+			productReference = 1F75A7B423E87CED0030AC48 /* Segregacja.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -486,7 +486,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dodocode.recyclingwarsaw;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Segregacja;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -506,7 +506,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dodocode.recyclingwarsaw;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Segregacja;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
