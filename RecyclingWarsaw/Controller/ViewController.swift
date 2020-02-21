@@ -238,7 +238,9 @@ extension ViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count >= 1{
+            searchBarTopView!.activityIndicator.show()
             trashHintsLoaderImpl?.loadTrashHints(text: searchText, completion: { [weak self] (elements) in
+                self?.searchBarTopView!.activityIndicator.hide(duration:0.5)
                 guard searchBar.text!.count >= 1 else {
                     self?.viewWithTableView?.isHidden = true
                     return
@@ -275,6 +277,7 @@ extension ViewController: UISearchBarDelegate{
             })
         }else{
             self.viewWithTableView?.isHidden = true
+            searchBarTopView!.activityIndicator.hide(duration: 1.5)
         }
     }
 }
@@ -304,14 +307,14 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         searchBar((searchBarTopView?.searchBar!)!, textDidChange: "")
         trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
             guard trashHintDetails != nil else {
-                self.loaderView?.hide()
+                self.loaderView?.hide(duration: 1.5)
                 return
             } //PRZYPADEK - NieZwróconoZHTMLAszczegółów
             //self.loaderView?.show()
             trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
             print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
             self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
-            self.loaderView?.hide()
+            self.loaderView?.hide(duration: 1.5)
         })
     }
     
@@ -345,7 +348,7 @@ extension ViewController: TilesViewDataSource, TilesViewDelegate{
     }
     
     func numberOfElements(in tilesView: TilesView, at row: Int) -> Int {
-       return trashDetailsFromPlistMenu![row].count
+        return trashDetailsFromPlistMenu![row].count
     }
     
     func buttonForRow(in tilesView: TilesView, at indexPath: IndexPath) -> UIButton {

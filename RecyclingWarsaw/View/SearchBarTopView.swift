@@ -31,7 +31,6 @@ class SearchBarTopView: UIView{
       addSubview(activityIndicator)
       setUpSearchBarConstraints()
       setUpActivityIndicatorConstraints()
-      activityIndicator.show()
     }
     
     private func setupView() {
@@ -58,7 +57,7 @@ class SearchBarTopView: UIView{
         activityIndicator!.snp.makeConstraints { (make) -> Void in
             make.height.equalToSuperview().multipliedBy(0.4)
             make.width.equalTo(activityIndicator!.snp.height)
-            make.right.equalToSuperview().offset(-20)
+            make.right.equalToSuperview().offset(-40)
             make.centerY.equalToSuperview()
         }
     }

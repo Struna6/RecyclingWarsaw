@@ -118,9 +118,9 @@ class LoaderView: UIView{
         })
     }
     
-    func hide(){
+    func hide(duration:Double){
         alpha = 1
-        UIView.animate(withDuration: 1.5, animations: { [weak self] in
+        UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.alpha = 0
         }, completion: { [weak self]
             (value: Bool) in
