@@ -27,7 +27,8 @@ class ViewController: UIViewController{
     var trashDetailsFromPlist: [TrashDetails]?//dodać w plist boola czy na stronie
     var trashDetailsFromPlistMenu: [[TrashDetails]]?
     var loaderView: LoaderView?
-    let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111"
+    let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111" //Testowe ID
+    //let bannerViewMainAdID = "ca-app-pub-3774653118074483/8906112332"//Dobre ID
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -328,7 +329,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
                     self.blurEffectView?.hide(duration: 1, completion: {})
                 })
                 return
-            } 
+            }
             trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
             print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
             self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)

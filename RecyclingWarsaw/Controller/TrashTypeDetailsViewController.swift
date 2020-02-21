@@ -20,7 +20,8 @@ class TrashTypeDetailsViewController: UIViewController {
     var trashCategoryImage: UIImageView!
     var categoryDetailsLabel: UILabel!
     var trashFromVC : TrashDetails?
-    let bannerViewDetailsAdID = "ca-app-pub-3940256099942544/6300978111"
+    let bannerViewDetailsAdID = "ca-app-pub-3940256099942544/6300978111"//Testowe ID
+    //let bannerViewDetailsAdID = "ca-app-pub-3774653118074483/2722464474"//Dobre ID
     var trashTypeDetailsViewControllerDelegate :TrashTypeDetailsViewControllerDelegate?
     var colorView: UIView!
     
