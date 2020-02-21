@@ -272,13 +272,28 @@ extension ViewController: UISearchBarDelegate{
                         self?.viewWithTableView?.tableView?.isScrollEnabled = false
                     }
                 }else{
-                    print("dupa nil")//PRZYPADEK - NieZwróconoZHTMLAszczegółów
+                    print("No internet connection")
+                    if searchText.count == 3{
+                        self?.searchBarTopView?.searchBar!.resignFirstResponder()//musi tu byc bo inaczej wróci klawiatura i mrugnie blur przez to
+                        self?.showAlert(title:"Ups",message:"Brak połączenia z internetem",okAction:{
+                            self?.tapOnBlur()
+                        })
+                    }
                 }
             })
         }else{
             self.viewWithTableView?.isHidden = true
             searchBarTopView!.activityIndicator.hide(duration: 1.5)
         }
+    }
+    
+    func showAlert(title:String, message:String, okAction: @escaping () -> Void){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default ) { action in
+            okAction()
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -308,9 +323,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
             guard trashHintDetails != nil else {
                 self.loaderView?.hide(duration: 1.5)
+                print("No Internet connection")
+                self.showAlert(title:"Ups",message:"Brak połączenia z internetem",okAction:{
+                    self.blurEffectView?.hide(duration: 1, completion: {})
+                })
                 return
-            } //PRZYPADEK - NieZwróconoZHTMLAszczegółów
-            //self.loaderView?.show()
+            } 
             trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
             print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
             self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
