@@ -92,7 +92,7 @@ class TrashHintDetailsProviderImpl: TrashHintDetailsProvider{
             print("KOSZ: baterie")
             trashHintDetail.trashDetail = trashDetailsFromPlist[7]
         }else if binText.lowercased().contains("elektrośmieci"){
-            print("KOSZ: elektrośmieci")
+            print("KOSZ: elektrosmieci")
             trashHintDetail.trashDetail = trashDetailsFromPlist[8]
         }else if binText.lowercased().contains("leki"){
             print("KOSZ: leki")
