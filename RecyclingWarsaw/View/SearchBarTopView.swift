@@ -12,6 +12,7 @@ import SnapKit
 
 class SearchBarTopView: UIView{
     var searchBar: UISearchBar?
+    var activityIndicator: LoaderView!
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -25,7 +26,12 @@ class SearchBarTopView: UIView{
       searchBar?.searchBarStyle = .minimal
       searchBar?.placeholder = "Wyszukaj produkt"
       addSubview(searchBar!)
+      activityIndicator = LoaderView(addBlur:false)
+      activityIndicator.isHidden = true
+      addSubview(activityIndicator)
       setUpSearchBarConstraints()
+      setUpActivityIndicatorConstraints()
+      activityIndicator.show()
     }
     
     private func setupView() {
@@ -45,6 +51,15 @@ class SearchBarTopView: UIView{
             make.top.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(0)
+        }
+    }
+    
+    private func setUpActivityIndicatorConstraints(){
+        activityIndicator!.snp.makeConstraints { (make) -> Void in
+            make.height.equalToSuperview().multipliedBy(0.4)
+            make.width.equalTo(activityIndicator!.snp.height)
+            make.right.equalToSuperview().offset(-20)
+            make.centerY.equalToSuperview()
         }
     }
 }

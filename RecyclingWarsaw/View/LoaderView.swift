@@ -16,12 +16,14 @@ class LoaderView: UIView{
     var activityIndicator: UIActivityIndicatorView?
     var animationView: AnimationView?
     
-    init(animationName: String? = nil) {
+    init(animationName: String? = nil,addBlur: Bool? = true) {
         super.init(frame: .zero)
         
         setupView()
+        if addBlur!{
         setUpBlurEffectView()
         setupblurEffectViewConstraints()
+        }
 
         if let name = animationName{
             setUpLottieLoader(animationName: name)
@@ -59,14 +61,14 @@ class LoaderView: UIView{
     
     func setUpActivityIndicator(){
         if #available(iOS 13.0, *) {
-            activityIndicator = UIActivityIndicatorView.init(style: .large)
+            activityIndicator = UIActivityIndicatorView.init(style: .medium)
         } else {
             activityIndicator = UIActivityIndicatorView.init() //CO TU?
         }
         if #available(iOS 13.0, *) {
             activityIndicator?.color = .label
         } else {
-            activityIndicator?.color = .white
+            activityIndicator?.color = .black
         }
         addSubview(activityIndicator!)
         //activityIndicator!.center = center
