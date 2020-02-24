@@ -30,6 +30,7 @@ class ViewController: UIViewController{
     var canSendEmail = true
     let bannerViewMainAdID = "ca-app-pub-3940256099942544/6300978111" //Testowe ID
     //let bannerViewMainAdID = "ca-app-pub-3774653118074483/8906112332"//Dobre ID
+    var didSetConstraintsVC = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,15 +90,21 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupSearchBarTopViewConstraints()
-        setupViewWithAddConstraints()
-        setupMainMenuViewConstraints()
-        setupblurEffectViewConstraints()
-        setupViewWithTableViewConstraints()
-        setupAddBannerViewConstraints()
-        setUpLoaderViewConstraints()
-        
-        //tilesView?.setUpButtons()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        if !didSetConstraintsVC{
+            setupSearchBarTopViewConstraints()
+            setupViewWithAddConstraints()
+            setupMainMenuViewConstraints()
+            setupblurEffectViewConstraints()
+            setupViewWithTableViewConstraints()
+            setupAddBannerViewConstraints()
+            setUpLoaderViewConstraints()
+            didSetConstraintsVC = true
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func setUpLoaderView(){
@@ -361,7 +368,11 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         detailsVC.additionalInfo = trashHintDetails.additionalInfo!
         detailsVC.trashHintName = trashHintDetails.trashHintName!
         detailsVC.trashTypeDetailsViewControllerDelegate = self
-        self.present(detailsVC, animated: true, completion: nil)
+        if #available(iOS 13.0, *){
+            present(detailsVC, animated: true, completion: nil)
+        }else{
+            navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
 }
 
@@ -406,6 +417,10 @@ extension ViewController: TilesViewDataSource, TilesViewDelegate{
         print(indexPath.section)
         detailsVC.trashFromVC = trashDetailsFromPlistMenu![indexPath.row][indexPath.section]
         detailsVC.trashTypeDetailsViewControllerDelegate = self
-        present(detailsVC, animated: true, completion: nil)
+        if #available(iOS 13.0, *){
+            present(detailsVC, animated: true, completion: nil)
+        }else{
+            navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
 }

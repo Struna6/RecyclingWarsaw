@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 13.0, *){}else{
             window = UIWindow(frame: UIScreen.main.bounds)
-            let viewController = ViewController()
+            let viewController = IntroViewController()
             window?.rootViewController = viewController
             window?.makeKeyAndVisible()
         }

@@ -27,6 +27,7 @@ class TrashTypeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
@@ -63,6 +64,7 @@ class TrashTypeDetailsViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         trashTypeDetailsViewControllerDelegate?.viewDidDisappear()
     }
     
@@ -129,14 +131,20 @@ class TrashTypeDetailsViewController: UIViewController {
             make.right.equalTo(view).offset(0)
             make.height.equalTo(50)
         }
-        
+
         trashCategoryImage!.snp.makeConstraints { (make) -> Void in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.7)
-            make.width.equalTo(view).multipliedBy(0.5)
-            make.height.equalTo(view).multipliedBy(0.5)
+            if #available(iOS 13.0, *) {
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview().multipliedBy(0.7)
+                make.width.equalTo(view).multipliedBy(0.5)
+                make.height.equalTo(view).multipliedBy(0.5)
+            } else {
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview().multipliedBy(0.85)
+                make.width.equalTo(view).multipliedBy(0.45)
+                make.height.equalTo(view).multipliedBy(0.45)
+            }
         }
-        
         categoryDetailsLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
             make.left.equalTo(view).offset(20)
@@ -144,4 +152,30 @@ class TrashTypeDetailsViewController: UIViewController {
             make.height.equalTo(view).multipliedBy(0.3)
         }
     }
+    
+//    func setUpLabelsAndImagesConstraints(){
+//        trashCategoryNameLabel!.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+//            //make.left.equalToSuperview().offset(10)
+//            //make.right.equalToSuperview().offset(-10)
+//            make.left.equalTo(view).offset(0)
+//            make.right.equalTo(view).offset(0)
+//            make.height.equalTo(50)
+//        }
+//
+//        trashCategoryImage!.snp.makeConstraints { (make) -> Void in
+//            //make.centerX.equalToSuperview()
+//            make.left.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.bottom.equalTo(categoryDetailsLabel.snp.top)
+//            make.top.equalTo(trashCategoryNameLabel.snp.bottom)
+//        }
+//
+//        categoryDetailsLabel!.snp.makeConstraints { (make) -> Void in
+//            make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
+//            make.left.equalToSuperview().offset(20)
+//            make.right.equalToSuperview().offset(-20)
+//            make.height.equalToSuperview().multipliedBy(0.3)
+//        }
+//    }
 }
