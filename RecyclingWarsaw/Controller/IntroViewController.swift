@@ -25,7 +25,7 @@ class IntroViewController: UIViewController {
         view.addSubview(imageView!)
         setUpImageViewConstraints()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.6) {
             let viewController = ViewController()
             viewController.modalPresentationStyle = .overFullScreen
             if #available(iOS 13.0, *){

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import GoogleMobileAds
+import MessageUI
 
 class ViewController: UIViewController{
     
@@ -334,8 +335,21 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.cellForRow(at: indexPath) is TrashHintCell else {
+            let message = "Proszę o dodanie do bazy danych produktu: \(searchBarTopView!.searchBar!.text!)"
             if canSendEmail{
-            print("Wyślij Email")
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+//                    mail.setToRecipients(["segregujna5@um.warszawa.pl"])
+                    mail.setToRecipients(["dodocode20@gmail.com"])
+                    mail.setSubject("Uzupełnienie braków bazy danych odpadów")
+                    mail.setMessageBody(message, isHTML: false)
+                    self.present(mail, animated: true)
+                } else {
+                    self.searchBarTopView?.searchBar?.resignFirstResponder()
+                    showAlert(title: "Ups", message: "Nie można wysłać maila, spróbuj ponownie później", okAction: {})
+                }
+                tapOnBlur()
             }
             return
         }
@@ -345,19 +359,19 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         searchBarTopView?.searchBar?.resignFirstResponder()
         searchBarTopView?.searchBar?.text = ""
         searchBar((searchBarTopView?.searchBar!)!, textDidChange: "")
-        trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { (trashHintDetails, error) in
+        trashHintDetailsProviderImpl?.getTrashHintDetails(urlString: urlString, trashDetailsFromPlist: trashDetailsFromPlist!, completion: { [weak self] (trashHintDetails, error) in
             guard trashHintDetails != nil else {
-                self.loaderView?.hide(duration: 1.5)
+                self?.loaderView?.hide(duration: 1.5)
                 print("No Internet connection")
-                self.showAlert(title:"Ups",message:"Brak połączenia z internetem",okAction:{
-                    self.blurEffectView?.hide(duration: 1, completion: {})
+                self?.showAlert(title:"Ups",message:"Brak połączenia z internetem",okAction:{ [weak self] in
+                    self?.blurEffectView?.hide(duration: 1, completion: {})
                 })
                 return
             }
-            trashHintDetails!.trashHintName = self.trashHints![indexPath.row].label
-            print("Nazwa śmiecia: \(self.trashHints![indexPath.row].label)")
-            self.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
-            self.loaderView?.hide(duration: 1.5)
+            trashHintDetails!.trashHintName = self?.trashHints![indexPath.row].label
+            print("Nazwa śmiecia: \(self?.trashHints![indexPath.row].label)")
+            self?.goToTrashDetailsVC(trashHintDetails:trashHintDetails!)
+            self?.loaderView?.hide(duration: 1.5)
         })
     }
     
@@ -422,5 +436,11 @@ extension ViewController: TilesViewDataSource, TilesViewDelegate{
         }else{
             navigationController?.pushViewController(detailsVC, animated: true)
         }
+    }
+}
+
+extension ViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
