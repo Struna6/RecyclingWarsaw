@@ -17,7 +17,6 @@ class ViewWithTableView: UIView{
       super.init(frame: frame)
       tableView = UITableView()
       addSubview(tableView!)
-     //tableView?.backgroundColor = .red
     }
     
     func setConstraints(){

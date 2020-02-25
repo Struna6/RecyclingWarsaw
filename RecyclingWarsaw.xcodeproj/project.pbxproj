@@ -24,7 +24,6 @@
 		1F75A7BA23E87CED0030AC48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */; };
 		1F75A7BC23E87CED0030AC48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7BB23E87CED0030AC48 /* ViewController.swift */; };
 		1F75A7C123E87CEE0030AC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F75A7C023E87CEE0030AC48 /* Assets.xcassets */; };
-		1F75A7C423E87CEE0030AC48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */; };
 		1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CB23E8838E0030AC48 /* TrashHint.swift */; };
 		1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */; };
 		1F75A7D023E894EA0030AC48 /* SearchBarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75A7CF23E894EA0030AC48 /* SearchBarTopView.swift */; };
@@ -38,6 +37,7 @@
 		1FFC202323E9D6DE007E99F1 /* TrashDetails.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */; };
 		1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC202423E9D9F0007E99F1 /* LoadFromPlistProvider.swift */; };
 		B4B0777DD6932A17E29160E5 /* Pods_RecyclingWarsaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */; };
+		F9E946D824055019006AD58E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E946D724055019006AD58E /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +59,6 @@
 		1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1F75A7BB23E87CED0030AC48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F75A7C023E87CEE0030AC48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F75A7C323E87CEE0030AC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F75A7C523E87CEE0030AC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F75A7CB23E8838E0030AC48 /* TrashHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHint.swift; sourceTree = "<group>"; };
 		1F75A7CD23E883F00030AC48 /* TrashHintsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashHintsLoader.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		3093BCF9DCAA2BB0E06EFAE6 /* Pods-RecyclingWarsaw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.release.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.release.xcconfig"; sourceTree = "<group>"; };
 		9D923B6CAC856B3121662F28 /* Pods-RecyclingWarsaw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecyclingWarsaw.debug.xcconfig"; path = "Target Support Files/Pods-RecyclingWarsaw/Pods-RecyclingWarsaw.debug.xcconfig"; sourceTree = "<group>"; };
 		B0BDE9963EEA9EF7FDCAD668 /* Pods_RecyclingWarsaw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecyclingWarsaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9E946D724055019006AD58E /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +101,7 @@
 				1FEE594323F1879D00E5EA58 /* TrashHintCell.swift */,
 				1F8020C52400504A00463E80 /* EmailCell.swift */,
 				1F4B154323FBECC10045929C /* LoaderView.swift */,
+				F9E946D724055019006AD58E /* PaddingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +181,6 @@
 				1F75A7B923E87CED0030AC48 /* SceneDelegate.swift */,
 				1FFC202223E9D6DE007E99F1 /* TrashDetails.plist */,
 				1F75A7C023E87CEE0030AC48 /* Assets.xcassets */,
-				1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */,
 				1F75A7C523E87CEE0030AC48 /* Info.plist */,
 			);
 			path = RecyclingWarsaw;
@@ -264,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4B154A23FC11000045929C /* Loader2.json in Resources */,
-				1F75A7C423E87CEE0030AC48 /* LaunchScreen.storyboard in Resources */,
 				1FE6CAF023F6D241001111E8 /* GoogleService-Info.plist in Resources */,
 				1F75A7C123E87CEE0030AC48 /* Assets.xcassets in Resources */,
 				1F4B154823FC063E0045929C /* Loader.json in Resources */,
@@ -332,6 +331,7 @@
 				1F4B154C23FC86A40045929C /* BlurView.swift in Sources */,
 				1F75A7CE23E883F00030AC48 /* TrashHintsLoader.swift in Sources */,
 				1FA749ED23F6E5C700F0B7C3 /* AdsProvider.swift in Sources */,
+				F9E946D824055019006AD58E /* PaddingLabel.swift in Sources */,
 				1FFC202523E9D9F0007E99F1 /* LoadFromPlistProvider.swift in Sources */,
 				1FFC202123E9A568007E99F1 /* TrashTypeDetailsViewController.swift in Sources */,
 				1F75A7CC23E8838E0030AC48 /* TrashHint.swift in Sources */,
@@ -349,17 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1F75A7C223E87CEE0030AC48 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F75A7C323E87CEE0030AC48 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F75A7C623E87CEE0030AC48 /* Debug */ = {

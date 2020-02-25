@@ -21,12 +21,13 @@ class EmailCell: UITableViewCell{
         backgroundColor = .purple
         theTextLabel = UILabel()
         theTextLabel.textColor = .white
-        theTextLabel.lineBreakMode = .byWordWrapping
+        theTextLabel.lineBreakMode = .byTruncatingMiddle
         theTextLabel.numberOfLines = 3
+        theTextLabel.font = UIFont(name: "Futura-Medium", size: 15.0)
         self.contentView.addSubview(theTextLabel)
         theTextLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(10)
-            $0.right.equalToSuperview().offset(-10)
+            $0.left.equalToSuperview().offset(15)
+            $0.right.equalToSuperview().offset(-15)
             $0.centerY.equalToSuperview()
         }
     }

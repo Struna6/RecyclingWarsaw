@@ -31,6 +31,10 @@ class TrashHintDetailsViewController: TrashTypeDetailsViewController{
     override func setUpTrashCategoryNameLabel(){
         super.setUpTrashCategoryNameLabel()
         trashCategoryNameLabel.text = trashHintName
-        trashCategoryNameLabel.backgroundColor = colorView.backgroundColor?.lighter()//TODO
+        trashCategoryNameLabel.backgroundColor = colorView.backgroundColor?.lighter(by: 5.0)//TODO
+        trashCategoryNameLabel.layer.shadowColor = colorView.backgroundColor?.darker()?.cgColor
+        trashCategoryNameLabel.layer.shadowOffset = CGSize(width: 0, height: 5)
+        trashCategoryNameLabel.layer.shadowRadius = 2.0
+        trashCategoryNameLabel.layer.shadowOpacity = 0.5
     }
 }

@@ -421,7 +421,6 @@ extension ViewController: TilesViewDataSource, TilesViewDelegate{
         button.setImage(UIImage(named: element.tileImageName!), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setBackgroundColor(color: (button.backgroundColor?.darker())!, forState: UIControl.State.highlighted)
-        
         return button
     }
     

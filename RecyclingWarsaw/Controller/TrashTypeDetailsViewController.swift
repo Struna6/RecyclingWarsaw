@@ -79,7 +79,7 @@ class TrashTypeDetailsViewController: UIViewController {
     }
     
     func setUpTrashCategoryNameLabel(){
-        trashCategoryNameLabel = UILabel()
+        trashCategoryNameLabel = PaddingLabel(top: 0.0, bottom: 0.0, left: 10.0, right: 10.0)
         //trashCategoryNameLabel.backgroundColor = .yellow //HelpfulColor
         trashCategoryNameLabel.text = trashFromVC!.name
         trashCategoryNameLabel.textAlignment = .center
@@ -145,6 +145,7 @@ class TrashTypeDetailsViewController: UIViewController {
                 make.height.equalTo(view).multipliedBy(0.45)
             }
         }
+        
         categoryDetailsLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
             make.left.equalTo(view).offset(20)
@@ -152,30 +153,4 @@ class TrashTypeDetailsViewController: UIViewController {
             make.height.equalTo(view).multipliedBy(0.3)
         }
     }
-    
-//    func setUpLabelsAndImagesConstraints(){
-//        trashCategoryNameLabel!.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-//            //make.left.equalToSuperview().offset(10)
-//            //make.right.equalToSuperview().offset(-10)
-//            make.left.equalTo(view).offset(0)
-//            make.right.equalTo(view).offset(0)
-//            make.height.equalTo(50)
-//        }
-//
-//        trashCategoryImage!.snp.makeConstraints { (make) -> Void in
-//            //make.centerX.equalToSuperview()
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//            make.bottom.equalTo(categoryDetailsLabel.snp.top)
-//            make.top.equalTo(trashCategoryNameLabel.snp.bottom)
-//        }
-//
-//        categoryDetailsLabel!.snp.makeConstraints { (make) -> Void in
-//            make.bottom.equalTo(viewWithAdd!.snp.top).offset(-20)
-//            make.left.equalToSuperview().offset(20)
-//            make.right.equalToSuperview().offset(-20)
-//            make.height.equalToSuperview().multipliedBy(0.3)
-//        }
-//    }
 }
