@@ -3,9 +3,8 @@ Swift iOS Application for Varsovians about correct recycling of garbage
 
 # Description
 
-Application was made in Swift using xCode. I have used SnapKit and programaticly made ViewControllers, app contains also Animations made using Lottie and ads by Google AdMob. 
-App is fully consistent with MVVM and POP pattern. Despite using already exisiting solutions I have made fully customizable and 
-expansible TileView. 
+Application was made in Swift using xCode. We have used SnapKit and programaticly made ViewControllers, app contains also Animations made using Lottie and ads by Google AdMob. 
+App is fully consistent with MVVM and POP pattern. Despite using already exisiting solutions we have made fully customizable and expansible TileView. 
 
 # Preview
 
